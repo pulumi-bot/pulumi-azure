@@ -43,6 +43,19 @@ namespace Pulumi.Azure.DataShare
         /// </summary>
         public static Task<GetDatasetKustoDatabaseResult> InvokeAsync(GetDatasetKustoDatabaseArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetKustoDatabaseResult>("azure:datashare/getDatasetKustoDatabase:getDatasetKustoDatabase", args ?? new GetDatasetKustoDatabaseArgs(), options.WithVersion());
+
+        public static Output<GetDatasetKustoDatabaseResult> Invoke(GetDatasetKustoDatabaseOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ShareId.Box()
+            ).Apply(a => {
+                    var args = new GetDatasetKustoDatabaseArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ShareId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.DataShare
         public string ShareId { get; set; } = null!;
 
         public GetDatasetKustoDatabaseArgs()
+        {
+        }
+    }
+
+    public sealed class GetDatasetKustoDatabaseOutputArgs
+    {
+        /// <summary>
+        /// The name of this Data Share Kusto Database Dataset.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The resource ID of the Data Share where this Data Share Kusto Database Dataset should be created.
+        /// </summary>
+        [Input("shareId", required: true)]
+        public Input<string> ShareId { get; set; } = null!;
+
+        public GetDatasetKustoDatabaseOutputArgs()
         {
         }
     }

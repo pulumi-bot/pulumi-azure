@@ -44,6 +44,21 @@ namespace Pulumi.Azure.EventHub
         /// </summary>
         public static Task<GetNamespaceAuthorizationRuleResult> InvokeAsync(GetNamespaceAuthorizationRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNamespaceAuthorizationRuleResult>("azure:eventhub/getNamespaceAuthorizationRule:getNamespaceAuthorizationRule", args ?? new GetNamespaceAuthorizationRuleArgs(), options.WithVersion());
+
+        public static Output<GetNamespaceAuthorizationRuleResult> Invoke(GetNamespaceAuthorizationRuleOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.NamespaceName.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetNamespaceAuthorizationRuleArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.NamespaceName));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -68,6 +83,31 @@ namespace Pulumi.Azure.EventHub
         public string ResourceGroupName { get; set; } = null!;
 
         public GetNamespaceAuthorizationRuleArgs()
+        {
+        }
+    }
+
+    public sealed class GetNamespaceAuthorizationRuleOutputArgs
+    {
+        /// <summary>
+        /// The name of the EventHub Authorization Rule resource.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the EventHub Namespace.
+        /// </summary>
+        [Input("namespaceName", required: true)]
+        public Input<string> NamespaceName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the resource group in which the EventHub Namespace exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetNamespaceAuthorizationRuleOutputArgs()
         {
         }
     }

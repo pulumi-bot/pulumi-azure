@@ -42,6 +42,23 @@ namespace Pulumi.Azure.EventHub
         /// </summary>
         public static Task<GetConsumeGroupResult> InvokeAsync(GetConsumeGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConsumeGroupResult>("azure:eventhub/getConsumeGroup:getConsumeGroup", args ?? new GetConsumeGroupArgs(), options.WithVersion());
+
+        public static Output<GetConsumeGroupResult> Invoke(GetConsumeGroupOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.EventhubName.Box(),
+                args.Name.Box(),
+                args.NamespaceName.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetConsumeGroupArgs();
+                    a[0].Set(args, nameof(args.EventhubName));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.NamespaceName));
+                    a[3].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -72,6 +89,37 @@ namespace Pulumi.Azure.EventHub
         public string ResourceGroupName { get; set; } = null!;
 
         public GetConsumeGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetConsumeGroupOutputArgs
+    {
+        /// <summary>
+        /// Specifies the name of the EventHub.
+        /// </summary>
+        [Input("eventhubName", required: true)]
+        public Input<string> EventhubName { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the EventHub Consumer Group resource.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the grandparent EventHub Namespace.
+        /// </summary>
+        [Input("namespaceName", required: true)]
+        public Input<string> NamespaceName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the resource group in which the EventHub Consumer Group's grandparent Namespace exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetConsumeGroupOutputArgs()
         {
         }
     }

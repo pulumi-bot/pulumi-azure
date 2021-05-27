@@ -40,6 +40,21 @@ namespace Pulumi.Azure.Storage
         /// </summary>
         public static Task<GetStorageContainerResult> InvokeAsync(GetStorageContainerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetStorageContainerResult>("azure:storage/getStorageContainer:getStorageContainer", args ?? new GetStorageContainerArgs(), options.WithVersion());
+
+        public static Output<GetStorageContainerResult> Invoke(GetStorageContainerOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Metadata.ToDict().Box(),
+                args.Name.Box(),
+                args.StorageAccountName.Box()
+            ).Apply(a => {
+                    var args = new GetStorageContainerArgs();
+                    a[0].Set(args, nameof(args.Metadata));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.StorageAccountName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -70,6 +85,37 @@ namespace Pulumi.Azure.Storage
         public string StorageAccountName { get; set; } = null!;
 
         public GetStorageContainerArgs()
+        {
+        }
+    }
+
+    public sealed class GetStorageContainerOutputArgs
+    {
+        [Input("metadata")]
+        private InputMap<string>? _metadata;
+
+        /// <summary>
+        /// A mapping of MetaData for this Container.
+        /// </summary>
+        public InputMap<string> Metadata
+        {
+            get => _metadata ?? (_metadata = new InputMap<string>());
+            set => _metadata = value;
+        }
+
+        /// <summary>
+        /// The name of the Container.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Storage Account where the Container exists.
+        /// </summary>
+        [Input("storageAccountName", required: true)]
+        public Input<string> StorageAccountName { get; set; } = null!;
+
+        public GetStorageContainerOutputArgs()
         {
         }
     }

@@ -13,6 +13,19 @@ namespace Pulumi.Azure.Avs
     {
         public static Task<GetPrivateCloudResult> InvokeAsync(GetPrivateCloudArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPrivateCloudResult>("azure:avs/getPrivateCloud:getPrivateCloud", args ?? new GetPrivateCloudArgs(), options.WithVersion());
+
+        public static Output<GetPrivateCloudResult> Invoke(GetPrivateCloudOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetPrivateCloudArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -31,6 +44,25 @@ namespace Pulumi.Azure.Avs
         public string ResourceGroupName { get; set; } = null!;
 
         public GetPrivateCloudArgs()
+        {
+        }
+    }
+
+    public sealed class GetPrivateCloudOutputArgs
+    {
+        /// <summary>
+        /// The name of this Vmware Private Cloud.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group where the Vmware Private Cloud exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetPrivateCloudOutputArgs()
         {
         }
     }

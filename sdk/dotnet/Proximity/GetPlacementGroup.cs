@@ -43,6 +43,19 @@ namespace Pulumi.Azure.Proximity
         /// </summary>
         public static Task<GetPlacementGroupResult> InvokeAsync(GetPlacementGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPlacementGroupResult>("azure:proximity/getPlacementGroup:getPlacementGroup", args ?? new GetPlacementGroupArgs(), options.WithVersion());
+
+        public static Output<GetPlacementGroupResult> Invoke(GetPlacementGroupOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetPlacementGroupArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.Proximity
         public string ResourceGroupName { get; set; } = null!;
 
         public GetPlacementGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetPlacementGroupOutputArgs
+    {
+        /// <summary>
+        /// The name of the Proximity Placement Group.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the resource group in which the Proximity Placement Group exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetPlacementGroupOutputArgs()
         {
         }
     }

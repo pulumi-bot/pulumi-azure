@@ -45,6 +45,25 @@ namespace Pulumi.Azure.Compute
         /// </summary>
         public static Task<GetPlatformImageResult> InvokeAsync(GetPlatformImageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPlatformImageResult>("azure:compute/getPlatformImage:getPlatformImage", args ?? new GetPlatformImageArgs(), options.WithVersion());
+
+        public static Output<GetPlatformImageResult> Invoke(GetPlatformImageOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Location.Box(),
+                args.Offer.Box(),
+                args.Publisher.Box(),
+                args.Sku.Box(),
+                args.Version.Box()
+            ).Apply(a => {
+                    var args = new GetPlatformImageArgs();
+                    a[0].Set(args, nameof(args.Location));
+                    a[1].Set(args, nameof(args.Offer));
+                    a[2].Set(args, nameof(args.Publisher));
+                    a[3].Set(args, nameof(args.Sku));
+                    a[4].Set(args, nameof(args.Version));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -81,6 +100,43 @@ namespace Pulumi.Azure.Compute
         public string? Version { get; set; }
 
         public GetPlatformImageArgs()
+        {
+        }
+    }
+
+    public sealed class GetPlatformImageOutputArgs
+    {
+        /// <summary>
+        /// Specifies the Location to pull information about this Platform Image from.
+        /// </summary>
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the Offer associated with the Platform Image.
+        /// </summary>
+        [Input("offer", required: true)]
+        public Input<string> Offer { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the Publisher associated with the Platform Image.
+        /// </summary>
+        [Input("publisher", required: true)]
+        public Input<string> Publisher { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the SKU of the Platform Image.
+        /// </summary>
+        [Input("sku", required: true)]
+        public Input<string> Sku { get; set; } = null!;
+
+        /// <summary>
+        /// The version of the Platform Image.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        public GetPlatformImageOutputArgs()
         {
         }
     }

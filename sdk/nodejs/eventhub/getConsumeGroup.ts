@@ -78,3 +78,29 @@ export interface GetConsumeGroupResult {
      */
     readonly userMetadata: string;
 }
+
+export function getConsumeGroupApply(args: GetConsumeGroupApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsumeGroupResult> {
+    return pulumi.output(args).apply(a => getConsumeGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getConsumeGroup.
+ */
+export interface GetConsumeGroupApplyArgs {
+    /**
+     * Specifies the name of the EventHub.
+     */
+    eventhubName: pulumi.Input<string>;
+    /**
+     * Specifies the name of the EventHub Consumer Group resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the grandparent EventHub Namespace.
+     */
+    namespaceName: pulumi.Input<string>;
+    /**
+     * The name of the resource group in which the EventHub Consumer Group's grandparent Namespace exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

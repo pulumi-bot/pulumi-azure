@@ -45,6 +45,21 @@ namespace Pulumi.Azure.ContainerService
         /// </summary>
         public static Task<GetKubernetesServiceVersionsResult> InvokeAsync(GetKubernetesServiceVersionsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesServiceVersionsResult>("azure:containerservice/getKubernetesServiceVersions:getKubernetesServiceVersions", args ?? new GetKubernetesServiceVersionsArgs(), options.WithVersion());
+
+        public static Output<GetKubernetesServiceVersionsResult> Invoke(GetKubernetesServiceVersionsOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.IncludePreview.Box(),
+                args.Location.Box(),
+                args.VersionPrefix.Box()
+            ).Apply(a => {
+                    var args = new GetKubernetesServiceVersionsArgs();
+                    a[0].Set(args, nameof(args.IncludePreview));
+                    a[1].Set(args, nameof(args.Location));
+                    a[2].Set(args, nameof(args.VersionPrefix));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -69,6 +84,31 @@ namespace Pulumi.Azure.ContainerService
         public string? VersionPrefix { get; set; }
 
         public GetKubernetesServiceVersionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetKubernetesServiceVersionsOutputArgs
+    {
+        /// <summary>
+        /// Should Preview versions of Kubernetes in AKS be included? Defaults to `true`
+        /// </summary>
+        [Input("includePreview")]
+        public Input<bool>? IncludePreview { get; set; }
+
+        /// <summary>
+        /// Specifies the location in which to query for versions.
+        /// </summary>
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        /// <summary>
+        /// A prefix filter for the versions of Kubernetes which should be returned; for example `1.` will return `1.9` to `1.14`, whereas `1.12` will return `1.12.2`.
+        /// </summary>
+        [Input("versionPrefix")]
+        public Input<string>? VersionPrefix { get; set; }
+
+        public GetKubernetesServiceVersionsOutputArgs()
         {
         }
     }

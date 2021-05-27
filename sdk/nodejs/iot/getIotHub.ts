@@ -66,3 +66,25 @@ export interface GetIotHubResult {
     readonly resourceGroupName: string;
     readonly tags?: {[key: string]: string};
 }
+
+export function getIotHubApply(args: GetIotHubApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIotHubResult> {
+    return pulumi.output(args).apply(a => getIotHub(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIotHub.
+ */
+export interface GetIotHubApplyArgs {
+    /**
+     * The name of this IoTHub.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the IoTHub exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * A mapping of tags which should be assigned to the IoTHub.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}

@@ -43,6 +43,21 @@ namespace Pulumi.Azure.AppService
         /// </summary>
         public static Task<GetCertificateResult> InvokeAsync(GetCertificateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("azure:appservice/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithVersion());
+
+        public static Output<GetCertificateResult> Invoke(GetCertificateOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetCertificateArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -69,6 +84,33 @@ namespace Pulumi.Azure.AppService
         }
 
         public GetCertificateArgs()
+        {
+        }
+    }
+
+    public sealed class GetCertificateOutputArgs
+    {
+        /// <summary>
+        /// Specifies the name of the certificate.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the resource group in which to create the certificate.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetCertificateOutputArgs()
         {
         }
     }

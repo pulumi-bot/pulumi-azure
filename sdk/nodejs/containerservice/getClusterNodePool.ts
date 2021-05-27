@@ -155,3 +155,25 @@ export interface GetClusterNodePoolResult {
      */
     readonly vnetSubnetId: string;
 }
+
+export function getClusterNodePoolApply(args: GetClusterNodePoolApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterNodePoolResult> {
+    return pulumi.output(args).apply(a => getClusterNodePool(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getClusterNodePool.
+ */
+export interface GetClusterNodePoolApplyArgs {
+    /**
+     * The Name of the Kubernetes Cluster where this Node Pool is located.
+     */
+    kubernetesClusterName: pulumi.Input<string>;
+    /**
+     * The name of this Kubernetes Cluster Node Pool.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Kubernetes Cluster exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

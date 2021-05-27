@@ -54,3 +54,17 @@ export interface GetTrafficManagerResult {
     readonly id: string;
     readonly name: string;
 }
+
+export function getTrafficManagerApply(args: GetTrafficManagerApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficManagerResult> {
+    return pulumi.output(args).apply(a => getTrafficManager(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTrafficManager.
+ */
+export interface GetTrafficManagerApplyArgs {
+    /**
+     * Specifies the name of the Location, for example `World`, `Europe` or `Germany`.
+     */
+    name: pulumi.Input<string>;
+}

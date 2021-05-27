@@ -63,3 +63,21 @@ export interface GetSubscriptionsResult {
      */
     readonly subscriptions: outputs.core.GetSubscriptionsSubscription[];
 }
+
+export function getSubscriptionsApply(args?: GetSubscriptionsApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionsResult> {
+    return pulumi.output(args).apply(a => getSubscriptions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSubscriptions.
+ */
+export interface GetSubscriptionsApplyArgs {
+    /**
+     * A case-insensitive value which must be contained within the `displayName` field, used to filter the results
+     */
+    displayNameContains?: pulumi.Input<string>;
+    /**
+     * A case-insensitive prefix which can be used to filter on the `displayName` field
+     */
+    displayNamePrefix?: pulumi.Input<string>;
+}

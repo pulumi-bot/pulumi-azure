@@ -43,6 +43,19 @@ namespace Pulumi.Azure.ManagedApplication
         /// </summary>
         public static Task<GetDefinitionResult> InvokeAsync(GetDefinitionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDefinitionResult>("azure:managedapplication/getDefinition:getDefinition", args ?? new GetDefinitionArgs(), options.WithVersion());
+
+        public static Output<GetDefinitionResult> Invoke(GetDefinitionOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetDefinitionArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.ManagedApplication
         public string ResourceGroupName { get; set; } = null!;
 
         public GetDefinitionArgs()
+        {
+        }
+    }
+
+    public sealed class GetDefinitionOutputArgs
+    {
+        /// <summary>
+        /// Specifies the name of the Managed Application Definition.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the Resource Group where this Managed Application Definition exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetDefinitionOutputArgs()
         {
         }
     }

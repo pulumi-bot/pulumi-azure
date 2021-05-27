@@ -50,6 +50,20 @@ namespace Pulumi.Azure.Advisor
         /// </summary>
         public static Task<GetRecommendationsResult> InvokeAsync(GetRecommendationsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRecommendationsResult>("azure:advisor/getRecommendations:getRecommendations", args ?? new GetRecommendationsArgs(), options.WithVersion());
+
+        public static Output<GetRecommendationsResult> Invoke(GetRecommendationsOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetRecommendationsOutputArgs();
+            return Pulumi.Output.All(
+                args.FilterByCategories.ToList().Box(),
+                args.FilterByResourceGroups.ToList().Box()
+            ).Apply(a => {
+                    var args = new GetRecommendationsArgs();
+                    a[0].Set(args, nameof(args.FilterByCategories));
+                    a[1].Set(args, nameof(args.FilterByResourceGroups));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -80,6 +94,37 @@ namespace Pulumi.Azure.Advisor
         }
 
         public GetRecommendationsArgs()
+        {
+        }
+    }
+
+    public sealed class GetRecommendationsOutputArgs
+    {
+        [Input("filterByCategories")]
+        private InputList<string>? _filterByCategories;
+
+        /// <summary>
+        /// Specifies a list of categories in which the Advisor Recommendations will be listed. Possible values are `HighAvailability`, `Security`, `Performance`, `Cost` and `OperationalExcellence`.
+        /// </summary>
+        public InputList<string> FilterByCategories
+        {
+            get => _filterByCategories ?? (_filterByCategories = new InputList<string>());
+            set => _filterByCategories = value;
+        }
+
+        [Input("filterByResourceGroups")]
+        private InputList<string>? _filterByResourceGroups;
+
+        /// <summary>
+        /// Specifies a list of resource groups about which the Advisor Recommendations will be listed.
+        /// </summary>
+        public InputList<string> FilterByResourceGroups
+        {
+            get => _filterByResourceGroups ?? (_filterByResourceGroups = new InputList<string>());
+            set => _filterByResourceGroups = value;
+        }
+
+        public GetRecommendationsOutputArgs()
         {
         }
     }

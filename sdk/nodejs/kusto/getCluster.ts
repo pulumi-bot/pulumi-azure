@@ -69,3 +69,21 @@ export interface GetClusterResult {
      */
     readonly uri: string;
 }
+
+export function getClusterApply(args: GetClusterApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
+    return pulumi.output(args).apply(a => getCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCluster.
+ */
+export interface GetClusterApplyArgs {
+    /**
+     * Specifies the name of the Kusto Cluster.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Kusto Cluster exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

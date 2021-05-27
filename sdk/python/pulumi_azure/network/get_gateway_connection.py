@@ -362,3 +362,10 @@ def get_gateway_connection(name: Optional[str] = None,
         type=__ret__.type,
         use_policy_based_traffic_selectors=__ret__.use_policy_based_traffic_selectors,
         virtual_network_gateway_id=__ret__.virtual_network_gateway_id)
+
+
+@_utilities.lift_output_func(get_gateway_connection)
+def get_gateway_connection_apply(name: Optional[pulumi.Input[str]] = None,
+                                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewayConnectionResult]:
+    ...

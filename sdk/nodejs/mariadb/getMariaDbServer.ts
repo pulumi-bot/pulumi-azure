@@ -93,3 +93,21 @@ export interface GetMariaDbServerResult {
      */
     readonly version: string;
 }
+
+export function getMariaDbServerApply(args: GetMariaDbServerApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMariaDbServerResult> {
+    return pulumi.output(args).apply(a => getMariaDbServer(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMariaDbServer.
+ */
+export interface GetMariaDbServerApplyArgs {
+    /**
+     * The name of the MariaDB Server to retrieve information about.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the resource group where the MariaDB Server exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

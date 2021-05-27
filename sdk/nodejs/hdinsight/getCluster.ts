@@ -108,3 +108,21 @@ export interface GetClusterResult {
      */
     readonly tlsMinVersion: string;
 }
+
+export function getClusterApply(args: GetClusterApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
+    return pulumi.output(args).apply(a => getCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCluster.
+ */
+export interface GetClusterApplyArgs {
+    /**
+     * Specifies the name of this HDInsight Cluster.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the Resource Group in which this HDInsight Cluster exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

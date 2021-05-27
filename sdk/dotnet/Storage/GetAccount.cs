@@ -43,6 +43,21 @@ namespace Pulumi.Azure.Storage
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(GetAccountArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("azure:storage/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithVersion());
+
+        public static Output<GetAccountResult> Invoke(GetAccountOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.MinTlsVersion.Box(),
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetAccountArgs();
+                    a[0].Set(args, nameof(args.MinTlsVersion));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -67,6 +82,31 @@ namespace Pulumi.Azure.Storage
         public string? ResourceGroupName { get; set; }
 
         public GetAccountArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccountOutputArgs
+    {
+        /// <summary>
+        /// The minimum supported TLS version for this storage account.
+        /// </summary>
+        [Input("minTlsVersion")]
+        public Input<string>? MinTlsVersion { get; set; }
+
+        /// <summary>
+        /// Specifies the name of the Storage Account
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the resource group the Storage Account is located in.
+        /// </summary>
+        [Input("resourceGroupName")]
+        public Input<string>? ResourceGroupName { get; set; }
+
+        public GetAccountOutputArgs()
         {
         }
     }

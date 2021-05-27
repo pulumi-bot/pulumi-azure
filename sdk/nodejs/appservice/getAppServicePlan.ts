@@ -100,3 +100,21 @@ export interface GetAppServicePlanResult {
      */
     readonly tags: {[key: string]: string};
 }
+
+export function getAppServicePlanApply(args: GetAppServicePlanApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppServicePlanResult> {
+    return pulumi.output(args).apply(a => getAppServicePlan(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAppServicePlan.
+ */
+export interface GetAppServicePlanApplyArgs {
+    /**
+     * The name of the App Service Plan.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where the App Service Plan exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

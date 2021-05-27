@@ -48,6 +48,19 @@ namespace Pulumi.Azure.Storage
         /// </summary>
         public static Task<GetEncryptionScopeResult> InvokeAsync(GetEncryptionScopeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEncryptionScopeResult>("azure:storage/getEncryptionScope:getEncryptionScope", args ?? new GetEncryptionScopeArgs(), options.WithVersion());
+
+        public static Output<GetEncryptionScopeResult> Invoke(GetEncryptionScopeOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.StorageAccountId.Box()
+            ).Apply(a => {
+                    var args = new GetEncryptionScopeArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.StorageAccountId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -66,6 +79,25 @@ namespace Pulumi.Azure.Storage
         public string StorageAccountId { get; set; } = null!;
 
         public GetEncryptionScopeArgs()
+        {
+        }
+    }
+
+    public sealed class GetEncryptionScopeOutputArgs
+    {
+        /// <summary>
+        /// The name of this Storage Encryption Scope.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the Storage Account where this Storage Encryption Scope exists.
+        /// </summary>
+        [Input("storageAccountId", required: true)]
+        public Input<string> StorageAccountId { get; set; } = null!;
+
+        public GetEncryptionScopeOutputArgs()
         {
         }
     }

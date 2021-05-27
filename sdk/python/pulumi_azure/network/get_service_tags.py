@@ -121,3 +121,11 @@ def get_service_tags(location: Optional[str] = None,
         location=__ret__.location,
         location_filter=__ret__.location_filter,
         service=__ret__.service)
+
+
+@_utilities.lift_output_func(get_service_tags)
+def get_service_tags_apply(location: Optional[pulumi.Input[str]] = None,
+                           location_filter: Optional[pulumi.Input[str]] = None,
+                           service: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceTagsResult]:
+    ...

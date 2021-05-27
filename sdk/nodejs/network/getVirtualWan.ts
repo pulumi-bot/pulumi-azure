@@ -100,3 +100,21 @@ export interface GetVirtualWanResult {
      */
     readonly vpnSiteIds: string[];
 }
+
+export function getVirtualWanApply(args: GetVirtualWanApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualWanResult> {
+    return pulumi.output(args).apply(a => getVirtualWan(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVirtualWan.
+ */
+export interface GetVirtualWanApplyArgs {
+    /**
+     * The name of this Virtual Wan.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Virtual Wan exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

@@ -72,3 +72,21 @@ export interface GetSharedImageGalleryResult {
      */
     readonly uniqueName: string;
 }
+
+export function getSharedImageGalleryApply(args: GetSharedImageGalleryApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSharedImageGalleryResult> {
+    return pulumi.output(args).apply(a => getSharedImageGallery(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSharedImageGallery.
+ */
+export interface GetSharedImageGalleryApplyArgs {
+    /**
+     * The name of the Shared Image Gallery.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group in which the Shared Image Gallery exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

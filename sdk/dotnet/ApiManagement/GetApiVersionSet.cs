@@ -44,6 +44,21 @@ namespace Pulumi.Azure.ApiManagement
         /// </summary>
         public static Task<GetApiVersionSetResult> InvokeAsync(GetApiVersionSetArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApiVersionSetResult>("azure:apimanagement/getApiVersionSet:getApiVersionSet", args ?? new GetApiVersionSetArgs(), options.WithVersion());
+
+        public static Output<GetApiVersionSetResult> Invoke(GetApiVersionSetOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ApiManagementName.Box(),
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetApiVersionSetArgs();
+                    a[0].Set(args, nameof(args.ApiManagementName));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -68,6 +83,31 @@ namespace Pulumi.Azure.ApiManagement
         public string ResourceGroupName { get; set; } = null!;
 
         public GetApiVersionSetArgs()
+        {
+        }
+    }
+
+    public sealed class GetApiVersionSetOutputArgs
+    {
+        /// <summary>
+        /// The name of the API Management Service where the API Version Set exists.
+        /// </summary>
+        [Input("apiManagementName", required: true)]
+        public Input<string> ApiManagementName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the API Version Set.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group in which the parent API Management Service exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetApiVersionSetOutputArgs()
         {
         }
     }

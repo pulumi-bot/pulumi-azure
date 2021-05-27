@@ -278,3 +278,10 @@ def get_private_cloud(name: Optional[str] = None,
         vcenter_certificate_thumbprint=__ret__.vcenter_certificate_thumbprint,
         vcsa_endpoint=__ret__.vcsa_endpoint,
         vmotion_subnet_cidr=__ret__.vmotion_subnet_cidr)
+
+
+@_utilities.lift_output_func(get_private_cloud)
+def get_private_cloud_apply(name: Optional[pulumi.Input[str]] = None,
+                            resource_group_name: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivateCloudResult]:
+    ...

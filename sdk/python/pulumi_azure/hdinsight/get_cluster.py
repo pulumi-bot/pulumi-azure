@@ -251,3 +251,10 @@ def get_cluster(name: Optional[str] = None,
         tags=__ret__.tags,
         tier=__ret__.tier,
         tls_min_version=__ret__.tls_min_version)
+
+
+@_utilities.lift_output_func(get_cluster)
+def get_cluster_apply(name: Optional[pulumi.Input[str]] = None,
+                      resource_group_name: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
+    ...

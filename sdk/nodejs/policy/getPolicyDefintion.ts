@@ -99,3 +99,29 @@ export interface GetPolicyDefintionResult {
      */
     readonly type: string;
 }
+
+export function getPolicyDefintionApply(args?: GetPolicyDefintionApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyDefintionResult> {
+    return pulumi.output(args).apply(a => getPolicyDefintion(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPolicyDefintion.
+ */
+export interface GetPolicyDefintionApplyArgs {
+    /**
+     * Specifies the display name of the Policy Definition. Conflicts with `name`.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * @deprecated Deprecated in favour of `management_group_name`
+     */
+    managementGroupId?: pulumi.Input<string>;
+    /**
+     * Only retrieve Policy Definitions from this Management Group.
+     */
+    managementGroupName?: pulumi.Input<string>;
+    /**
+     * Specifies the name of the Policy Definition. Conflicts with `displayName`.
+     */
+    name?: pulumi.Input<string>;
+}

@@ -106,3 +106,10 @@ def get_images(resource_group_name: Optional[str] = None,
         images=__ret__.images,
         resource_group_name=__ret__.resource_group_name,
         tags_filter=__ret__.tags_filter)
+
+
+@_utilities.lift_output_func(get_images)
+def get_images_apply(resource_group_name: Optional[pulumi.Input[str]] = None,
+                     tags_filter: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImagesResult]:
+    ...

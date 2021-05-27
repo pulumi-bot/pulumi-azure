@@ -39,6 +39,19 @@ namespace Pulumi.Azure.Compute
         /// </summary>
         public static Task<GetImagesResult> InvokeAsync(GetImagesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("azure:compute/getImages:getImages", args ?? new GetImagesArgs(), options.WithVersion());
+
+        public static Output<GetImagesResult> Invoke(GetImagesOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ResourceGroupName.Box(),
+                args.TagsFilter.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetImagesArgs();
+                    a[0].Set(args, nameof(args.ResourceGroupName));
+                    a[1].Set(args, nameof(args.TagsFilter));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,31 @@ namespace Pulumi.Azure.Compute
         }
 
         public GetImagesArgs()
+        {
+        }
+    }
+
+    public sealed class GetImagesOutputArgs
+    {
+        /// <summary>
+        /// The name of the Resource Group in which the Image exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        [Input("tagsFilter")]
+        private InputMap<string>? _tagsFilter;
+
+        /// <summary>
+        /// A mapping of tags to filter the list of images against.
+        /// </summary>
+        public InputMap<string> TagsFilter
+        {
+            get => _tagsFilter ?? (_tagsFilter = new InputMap<string>());
+            set => _tagsFilter = value;
+        }
+
+        public GetImagesOutputArgs()
         {
         }
     }

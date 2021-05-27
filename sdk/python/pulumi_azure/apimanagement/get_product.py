@@ -199,3 +199,11 @@ def get_product(api_management_name: Optional[str] = None,
         subscription_required=__ret__.subscription_required,
         subscriptions_limit=__ret__.subscriptions_limit,
         terms=__ret__.terms)
+
+
+@_utilities.lift_output_func(get_product)
+def get_product_apply(api_management_name: Optional[pulumi.Input[str]] = None,
+                      product_id: Optional[pulumi.Input[str]] = None,
+                      resource_group_name: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProductResult]:
+    ...

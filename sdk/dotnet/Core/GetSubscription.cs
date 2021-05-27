@@ -39,6 +39,18 @@ namespace Pulumi.Azure.Core
         /// </summary>
         public static Task<GetSubscriptionResult> InvokeAsync(GetSubscriptionArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionResult>("azure:core/getSubscription:getSubscription", args ?? new GetSubscriptionArgs(), options.WithVersion());
+
+        public static Output<GetSubscriptionResult> Invoke(GetSubscriptionOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetSubscriptionOutputArgs();
+            return Pulumi.Output.All(
+                args.SubscriptionId.Box()
+            ).Apply(a => {
+                    var args = new GetSubscriptionArgs();
+                    a[0].Set(args, nameof(args.SubscriptionId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +63,19 @@ namespace Pulumi.Azure.Core
         public string? SubscriptionId { get; set; }
 
         public GetSubscriptionArgs()
+        {
+        }
+    }
+
+    public sealed class GetSubscriptionOutputArgs
+    {
+        /// <summary>
+        /// Specifies the ID of the subscription. If this argument is omitted, the subscription ID of the current Azure Resource Manager provider is used.
+        /// </summary>
+        [Input("subscriptionId")]
+        public Input<string>? SubscriptionId { get; set; }
+
+        public GetSubscriptionOutputArgs()
         {
         }
     }

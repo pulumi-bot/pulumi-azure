@@ -175,3 +175,11 @@ def get_public_ip_prefix(name: Optional[str] = None,
         sku=__ret__.sku,
         tags=__ret__.tags,
         zones=__ret__.zones)
+
+
+@_utilities.lift_output_func(get_public_ip_prefix)
+def get_public_ip_prefix_apply(name: Optional[pulumi.Input[str]] = None,
+                               resource_group_name: Optional[pulumi.Input[str]] = None,
+                               zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPublicIpPrefixResult]:
+    ...

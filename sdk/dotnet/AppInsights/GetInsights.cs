@@ -43,6 +43,19 @@ namespace Pulumi.Azure.AppInsights
         /// </summary>
         public static Task<GetInsightsResult> InvokeAsync(GetInsightsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInsightsResult>("azure:appinsights/getInsights:getInsights", args ?? new GetInsightsArgs(), options.WithVersion());
+
+        public static Output<GetInsightsResult> Invoke(GetInsightsOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetInsightsArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.AppInsights
         public string ResourceGroupName { get; set; } = null!;
 
         public GetInsightsArgs()
+        {
+        }
+    }
+
+    public sealed class GetInsightsOutputArgs
+    {
+        /// <summary>
+        /// Specifies the name of the Application Insights component.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the resource group the Application Insights component is located in.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetInsightsOutputArgs()
         {
         }
     }

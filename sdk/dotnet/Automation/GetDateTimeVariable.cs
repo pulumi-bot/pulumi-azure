@@ -45,6 +45,21 @@ namespace Pulumi.Azure.Automation
         /// </summary>
         public static Task<GetDateTimeVariableResult> InvokeAsync(GetDateTimeVariableArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDateTimeVariableResult>("azure:automation/getDateTimeVariable:getDateTimeVariable", args ?? new GetDateTimeVariableArgs(), options.WithVersion());
+
+        public static Output<GetDateTimeVariableResult> Invoke(GetDateTimeVariableOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.AutomationAccountName.Box(),
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetDateTimeVariableArgs();
+                    a[0].Set(args, nameof(args.AutomationAccountName));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -69,6 +84,31 @@ namespace Pulumi.Azure.Automation
         public string ResourceGroupName { get; set; } = null!;
 
         public GetDateTimeVariableArgs()
+        {
+        }
+    }
+
+    public sealed class GetDateTimeVariableOutputArgs
+    {
+        /// <summary>
+        /// The name of the automation account in which the Automation Variable exists.
+        /// </summary>
+        [Input("automationAccountName", required: true)]
+        public Input<string> AutomationAccountName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Automation Variable.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The Name of the Resource Group where the automation account exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetDateTimeVariableOutputArgs()
         {
         }
     }

@@ -154,3 +154,21 @@ export interface GetAccountResult {
      */
     readonly writeEndpoints: string[];
 }
+
+export function getAccountApply(args: GetAccountApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
+    return pulumi.output(args).apply(a => getAccount(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccount.
+ */
+export interface GetAccountApplyArgs {
+    /**
+     * Specifies the name of the CosmosDB Account.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies the name of the resource group in which the CosmosDB Account resides.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

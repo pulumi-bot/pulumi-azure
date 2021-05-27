@@ -43,6 +43,19 @@ namespace Pulumi.Azure.MSSql
         /// </summary>
         public static Task<GetDatabaseResult> InvokeAsync(GetDatabaseArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseResult>("azure:mssql/getDatabase:getDatabase", args ?? new GetDatabaseArgs(), options.WithVersion());
+
+        public static Output<GetDatabaseResult> Invoke(GetDatabaseOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ServerId.Box()
+            ).Apply(a => {
+                    var args = new GetDatabaseArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ServerId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.MSSql
         public string ServerId { get; set; } = null!;
 
         public GetDatabaseArgs()
+        {
+        }
+    }
+
+    public sealed class GetDatabaseOutputArgs
+    {
+        /// <summary>
+        /// The name of the Ms SQL Database.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The id of the Ms SQL Server on which to create the database.
+        /// </summary>
+        [Input("serverId", required: true)]
+        public Input<string> ServerId { get; set; } = null!;
+
+        public GetDatabaseOutputArgs()
         {
         }
     }

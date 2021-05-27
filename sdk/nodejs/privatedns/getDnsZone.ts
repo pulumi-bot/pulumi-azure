@@ -82,3 +82,23 @@ export interface GetDnsZoneResult {
      */
     readonly tags: {[key: string]: string};
 }
+
+export function getDnsZoneApply(args: GetDnsZoneApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDnsZoneResult> {
+    return pulumi.output(args).apply(a => getDnsZone(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDnsZone.
+ */
+export interface GetDnsZoneApplyArgs {
+    /**
+     * The name of the Private DNS Zone.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where the Private DNS Zone exists.
+     * If the Name of the Resource Group is not provided, the first Private DNS Zone from the list of Private
+     * DNS Zones in your subscription that matches `name` will be returned.
+     */
+    resourceGroupName?: pulumi.Input<string>;
+}

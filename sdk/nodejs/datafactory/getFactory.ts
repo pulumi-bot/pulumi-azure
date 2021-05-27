@@ -80,3 +80,21 @@ export interface GetFactoryResult {
      */
     readonly vstsConfigurations: outputs.datafactory.GetFactoryVstsConfiguration[];
 }
+
+export function getFactoryApply(args: GetFactoryApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFactoryResult> {
+    return pulumi.output(args).apply(a => getFactory(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFactory.
+ */
+export interface GetFactoryApplyArgs {
+    /**
+     * The name of this Azure Data Factory.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the Resource Group where the Azure Data Factory exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

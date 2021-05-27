@@ -79,3 +79,25 @@ export interface GetStringVariableResult {
      */
     readonly value: string;
 }
+
+export function getStringVariableApply(args: GetStringVariableApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStringVariableResult> {
+    return pulumi.output(args).apply(a => getStringVariable(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getStringVariable.
+ */
+export interface GetStringVariableApplyArgs {
+    /**
+     * The name of the automation account in which the Automation Variable exists.
+     */
+    automationAccountName: pulumi.Input<string>;
+    /**
+     * The name of the Automation Variable.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Name of the Resource Group where the automation account exists.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

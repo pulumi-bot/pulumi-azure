@@ -41,6 +41,21 @@ namespace Pulumi.Azure.Compute
         /// </summary>
         public static Task<GetSharedImageResult> InvokeAsync(GetSharedImageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSharedImageResult>("azure:compute/getSharedImage:getSharedImage", args ?? new GetSharedImageArgs(), options.WithVersion());
+
+        public static Output<GetSharedImageResult> Invoke(GetSharedImageOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.GalleryName.Box(),
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetSharedImageArgs();
+                    a[0].Set(args, nameof(args.GalleryName));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -65,6 +80,31 @@ namespace Pulumi.Azure.Compute
         public string ResourceGroupName { get; set; } = null!;
 
         public GetSharedImageArgs()
+        {
+        }
+    }
+
+    public sealed class GetSharedImageOutputArgs
+    {
+        /// <summary>
+        /// The name of the Shared Image Gallery in which the Shared Image exists.
+        /// </summary>
+        [Input("galleryName", required: true)]
+        public Input<string> GalleryName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Shared Image.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group in which the Shared Image Gallery exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetSharedImageOutputArgs()
         {
         }
     }

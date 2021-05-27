@@ -41,6 +41,21 @@ namespace Pulumi.Azure.Iot
         /// </summary>
         public static Task<GetDpsSharedAccessPolicyResult> InvokeAsync(GetDpsSharedAccessPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDpsSharedAccessPolicyResult>("azure:iot/getDpsSharedAccessPolicy:getDpsSharedAccessPolicy", args ?? new GetDpsSharedAccessPolicyArgs(), options.WithVersion());
+
+        public static Output<GetDpsSharedAccessPolicyResult> Invoke(GetDpsSharedAccessPolicyOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.IothubDpsName.Box(),
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetDpsSharedAccessPolicyArgs();
+                    a[0].Set(args, nameof(args.IothubDpsName));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -65,6 +80,31 @@ namespace Pulumi.Azure.Iot
         public string ResourceGroupName { get; set; } = null!;
 
         public GetDpsSharedAccessPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetDpsSharedAccessPolicyOutputArgs
+    {
+        /// <summary>
+        /// Specifies the name of the IoT Hub Device Provisioning service to which the Shared Access Policy belongs.
+        /// </summary>
+        [Input("iothubDpsName", required: true)]
+        public Input<string> IothubDpsName { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the IotHub Shared Access Policy.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the name of the resource group under which the IotHub Shared Access Policy resource exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetDpsSharedAccessPolicyOutputArgs()
         {
         }
     }

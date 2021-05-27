@@ -43,6 +43,19 @@ namespace Pulumi.Azure.PostgreSql
         /// </summary>
         public static Task<GetFlexibleServerResult> InvokeAsync(GetFlexibleServerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFlexibleServerResult>("azure:postgresql/getFlexibleServer:getFlexibleServer", args ?? new GetFlexibleServerArgs(), options.WithVersion());
+
+        public static Output<GetFlexibleServerResult> Invoke(GetFlexibleServerOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ResourceGroupName.Box()
+            ).Apply(a => {
+                    var args = new GetFlexibleServerArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ResourceGroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,25 @@ namespace Pulumi.Azure.PostgreSql
         public string ResourceGroupName { get; set; } = null!;
 
         public GetFlexibleServerArgs()
+        {
+        }
+    }
+
+    public sealed class GetFlexibleServerOutputArgs
+    {
+        /// <summary>
+        /// The name of this PostgreSQL Flexible Server.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Resource Group where the PostgreSQL Flexible Server exists.
+        /// </summary>
+        [Input("resourceGroupName", required: true)]
+        public Input<string> ResourceGroupName { get; set; } = null!;
+
+        public GetFlexibleServerOutputArgs()
         {
         }
     }
