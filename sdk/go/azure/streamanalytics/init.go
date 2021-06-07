@@ -52,10 +52,7 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 }
 
 func init() {
-	version, err := azure.PkgVersion()
-	if err != nil {
-		fmt.Println("failed to determine package version. defaulting to v1: %v", err)
-	}
+	version := azure.PkgVersion()
 	pulumi.RegisterResourceModule(
 		"azure",
 		"streamanalytics/functionJavaScriptUDF",
