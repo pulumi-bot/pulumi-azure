@@ -184,7 +184,7 @@ class _ActiveDirectoryAdministratorState:
 class ActiveDirectoryAdministrator(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  login: Optional[pulumi.Input[str]] = None,
                  object_id: Optional[pulumi.Input[str]] = None,
@@ -227,7 +227,7 @@ class ActiveDirectoryAdministrator(pulumi.CustomResource):
          $ pulumi import azure:mysql/activeDirectoryAdministrator:ActiveDirectoryAdministrator administrator /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.DBforMySQL/servers/myserver/administrators/activeDirectory
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] login: The login name of the principal to set as the server administrator
         :param pulumi.Input[str] object_id: The ID of the principal to set as the server administrator
@@ -238,7 +238,7 @@ class ActiveDirectoryAdministrator(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ActiveDirectoryAdministratorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -276,20 +276,20 @@ class ActiveDirectoryAdministrator(pulumi.CustomResource):
          $ pulumi import azure:mysql/activeDirectoryAdministrator:ActiveDirectoryAdministrator administrator /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.DBforMySQL/servers/myserver/administrators/activeDirectory
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ActiveDirectoryAdministratorArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ActiveDirectoryAdministratorArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  login: Optional[pulumi.Input[str]] = None,
                  object_id: Optional[pulumi.Input[str]] = None,
@@ -325,12 +325,12 @@ class ActiveDirectoryAdministrator(pulumi.CustomResource):
             __props__.__dict__["tenant_id"] = tenant_id
         super(ActiveDirectoryAdministrator, __self__).__init__(
             'azure:mysql/activeDirectoryAdministrator:ActiveDirectoryAdministrator',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             login: Optional[pulumi.Input[str]] = None,
@@ -342,7 +342,7 @@ class ActiveDirectoryAdministrator(pulumi.CustomResource):
         Get an existing ActiveDirectoryAdministrator resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] login: The login name of the principal to set as the server administrator
@@ -360,7 +360,7 @@ class ActiveDirectoryAdministrator(pulumi.CustomResource):
         __props__.__dict__["resource_group_name"] = resource_group_name
         __props__.__dict__["server_name"] = server_name
         __props__.__dict__["tenant_id"] = tenant_id
-        return ActiveDirectoryAdministrator(resource_name, opts=opts, __props__=__props__)
+        return ActiveDirectoryAdministrator(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

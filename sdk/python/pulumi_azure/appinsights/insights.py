@@ -403,7 +403,7 @@ class _InsightsState:
 class Insights(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_type: Optional[pulumi.Input[str]] = None,
                  daily_data_cap_in_gb: Optional[pulumi.Input[float]] = None,
@@ -442,7 +442,7 @@ class Insights(pulumi.CustomResource):
          $ pulumi import azure:appinsights/insights:Insights instance1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/microsoft.insights/components/instance1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_type: Specifies the type of Application Insights to create. Valid values are `ios` for _iOS_, `java` for _Java web_, `MobileCenter` for _App Center_, `Node.JS` for _Node.js_, `other` for _General_, `phone` for _Windows Phone_, `store` for _Windows Store_ and `web` for _ASP.NET_. Please note these values are case sensitive; unmatched values are treated as _ASP.NET_ by Azure. Changing this forces a new resource to be created.
         :param pulumi.Input[float] daily_data_cap_in_gb: Specifies the Application Insights component daily data volume cap in GB.
@@ -460,7 +460,7 @@ class Insights(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: InsightsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -489,20 +489,20 @@ class Insights(pulumi.CustomResource):
          $ pulumi import azure:appinsights/insights:Insights instance1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/microsoft.insights/components/instance1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param InsightsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(InsightsArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_type: Optional[pulumi.Input[str]] = None,
                  daily_data_cap_in_gb: Optional[pulumi.Input[float]] = None,
@@ -545,12 +545,12 @@ class Insights(pulumi.CustomResource):
             __props__.__dict__["instrumentation_key"] = None
         super(Insights, __self__).__init__(
             'azure:appinsights/insights:Insights',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_id: Optional[pulumi.Input[str]] = None,
@@ -570,7 +570,7 @@ class Insights(pulumi.CustomResource):
         Get an existing Insights resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The App ID associated with this Application Insights component.
@@ -606,7 +606,7 @@ class Insights(pulumi.CustomResource):
         __props__.__dict__["retention_in_days"] = retention_in_days
         __props__.__dict__["sampling_percentage"] = sampling_percentage
         __props__.__dict__["tags"] = tags
-        return Insights(resource_name, opts=opts, __props__=__props__)
+        return Insights(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="appId")

@@ -444,7 +444,7 @@ class _IntegrationRuntimeManagedState:
 class IntegrationRuntimeManaged(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_info: Optional[pulumi.Input[pulumi.InputType['IntegrationRuntimeManagedCatalogInfoArgs']]] = None,
                  custom_setup_script: Optional[pulumi.Input[pulumi.InputType['IntegrationRuntimeManagedCustomSetupScriptArgs']]] = None,
@@ -490,7 +490,7 @@ class IntegrationRuntimeManaged(pulumi.CustomResource):
          $ pulumi import azure:datafactory/integrationRuntimeManaged:IntegrationRuntimeManaged example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example/providers/Microsoft.DataFactory/factories/example/integrationruntimes/example
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['IntegrationRuntimeManagedCatalogInfoArgs']] catalog_info: A `catalog_info` block as defined below.
         :param pulumi.Input[pulumi.InputType['IntegrationRuntimeManagedCustomSetupScriptArgs']] custom_setup_script: A `custom_setup_script` block as defined below.
@@ -509,7 +509,7 @@ class IntegrationRuntimeManaged(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: IntegrationRuntimeManagedArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -542,20 +542,20 @@ class IntegrationRuntimeManaged(pulumi.CustomResource):
          $ pulumi import azure:datafactory/integrationRuntimeManaged:IntegrationRuntimeManaged example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example/providers/Microsoft.DataFactory/factories/example/integrationruntimes/example
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param IntegrationRuntimeManagedArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(IntegrationRuntimeManagedArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_info: Optional[pulumi.Input[pulumi.InputType['IntegrationRuntimeManagedCatalogInfoArgs']]] = None,
                  custom_setup_script: Optional[pulumi.Input[pulumi.InputType['IntegrationRuntimeManagedCustomSetupScriptArgs']]] = None,
@@ -603,12 +603,12 @@ class IntegrationRuntimeManaged(pulumi.CustomResource):
             __props__.__dict__["vnet_integration"] = vnet_integration
         super(IntegrationRuntimeManaged, __self__).__init__(
             'azure:datafactory/integrationRuntimeManaged:IntegrationRuntimeManaged',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             catalog_info: Optional[pulumi.Input[pulumi.InputType['IntegrationRuntimeManagedCatalogInfoArgs']]] = None,
@@ -628,7 +628,7 @@ class IntegrationRuntimeManaged(pulumi.CustomResource):
         Get an existing IntegrationRuntimeManaged resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['IntegrationRuntimeManagedCatalogInfoArgs']] catalog_info: A `catalog_info` block as defined below.
@@ -662,7 +662,7 @@ class IntegrationRuntimeManaged(pulumi.CustomResource):
         __props__.__dict__["number_of_nodes"] = number_of_nodes
         __props__.__dict__["resource_group_name"] = resource_group_name
         __props__.__dict__["vnet_integration"] = vnet_integration
-        return IntegrationRuntimeManaged(resource_name, opts=opts, __props__=__props__)
+        return IntegrationRuntimeManaged(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="catalogInfo")

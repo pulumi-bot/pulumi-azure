@@ -393,7 +393,7 @@ class _PolicySetDefinitionState:
 class PolicySetDefinition(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -457,7 +457,7 @@ class PolicySetDefinition(pulumi.CustomResource):
          $ pulumi import azure:policy/policySetDefinition:PolicySetDefinition example /providers/Microsoft.Management/managementGroups/my-mgmt-group-id/providers/Microsoft.Authorization/policySetDefinitions/testPolicySet
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the policy set definition.
         :param pulumi.Input[str] display_name: The display name of the policy set definition.
@@ -474,7 +474,7 @@ class PolicySetDefinition(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: PolicySetDefinitionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -527,20 +527,20 @@ class PolicySetDefinition(pulumi.CustomResource):
          $ pulumi import azure:policy/policySetDefinition:PolicySetDefinition example /providers/Microsoft.Management/managementGroups/my-mgmt-group-id/providers/Microsoft.Authorization/policySetDefinitions/testPolicySet
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param PolicySetDefinitionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(PolicySetDefinitionArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -588,12 +588,12 @@ class PolicySetDefinition(pulumi.CustomResource):
             __props__.__dict__["policy_type"] = policy_type
         super(PolicySetDefinition, __self__).__init__(
             'azure:policy/policySetDefinition:PolicySetDefinition',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -611,7 +611,7 @@ class PolicySetDefinition(pulumi.CustomResource):
         Get an existing PolicySetDefinition resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the policy set definition.
@@ -641,7 +641,7 @@ class PolicySetDefinition(pulumi.CustomResource):
         __props__.__dict__["policy_definition_references"] = policy_definition_references
         __props__.__dict__["policy_definitions"] = policy_definitions
         __props__.__dict__["policy_type"] = policy_type
-        return PolicySetDefinition(resource_name, opts=opts, __props__=__props__)
+        return PolicySetDefinition(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

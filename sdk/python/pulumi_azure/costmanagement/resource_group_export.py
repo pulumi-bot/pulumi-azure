@@ -281,7 +281,7 @@ class _ResourceGroupExportState:
 class ResourceGroupExport(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  delivery_info: Optional[pulumi.Input[pulumi.InputType['ResourceGroupExportDeliveryInfoArgs']]] = None,
@@ -331,7 +331,7 @@ class ResourceGroupExport(pulumi.CustomResource):
          $ pulumi import azure:costmanagement/resourceGroupExport:ResourceGroupExport example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example/providers/Microsoft.CostManagement/exports/example
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Is the cost management export active? Default is `true`.
         :param pulumi.Input[pulumi.InputType['ResourceGroupExportDeliveryInfoArgs']] delivery_info: A `delivery_info` block as defined below.
@@ -345,7 +345,7 @@ class ResourceGroupExport(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ResourceGroupExportArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -387,20 +387,20 @@ class ResourceGroupExport(pulumi.CustomResource):
          $ pulumi import azure:costmanagement/resourceGroupExport:ResourceGroupExport example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example/providers/Microsoft.CostManagement/exports/example
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ResourceGroupExportArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ResourceGroupExportArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  delivery_info: Optional[pulumi.Input[pulumi.InputType['ResourceGroupExportDeliveryInfoArgs']]] = None,
@@ -444,12 +444,12 @@ class ResourceGroupExport(pulumi.CustomResource):
             __props__.__dict__["resource_group_id"] = resource_group_id
         super(ResourceGroupExport, __self__).__init__(
             'azure:costmanagement/resourceGroupExport:ResourceGroupExport',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             active: Optional[pulumi.Input[bool]] = None,
@@ -464,7 +464,7 @@ class ResourceGroupExport(pulumi.CustomResource):
         Get an existing ResourceGroupExport resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Is the cost management export active? Default is `true`.
@@ -488,7 +488,7 @@ class ResourceGroupExport(pulumi.CustomResource):
         __props__.__dict__["recurrence_period_start"] = recurrence_period_start
         __props__.__dict__["recurrence_type"] = recurrence_type
         __props__.__dict__["resource_group_id"] = resource_group_id
-        return ResourceGroupExport(resource_name, opts=opts, __props__=__props__)
+        return ResourceGroupExport(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

@@ -316,7 +316,7 @@ class _ShareFileState:
 class ShareFile(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  content_disposition: Optional[pulumi.Input[str]] = None,
                  content_encoding: Optional[pulumi.Input[str]] = None,
@@ -359,7 +359,7 @@ class ShareFile(pulumi.CustomResource):
          $ pulumi import azure:storage/shareFile:ShareFile example https://account1.file.core.windows.net/share1/file1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content_disposition: Sets the file’s Content-Disposition header.
         :param pulumi.Input[str] content_encoding: Specifies which content encodings have been applied to the file.
@@ -374,7 +374,7 @@ class ShareFile(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ShareFileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -408,20 +408,20 @@ class ShareFile(pulumi.CustomResource):
          $ pulumi import azure:storage/shareFile:ShareFile example https://account1.file.core.windows.net/share1/file1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ShareFileArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ShareFileArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  content_disposition: Optional[pulumi.Input[str]] = None,
                  content_encoding: Optional[pulumi.Input[str]] = None,
@@ -457,12 +457,12 @@ class ShareFile(pulumi.CustomResource):
             __props__.__dict__["storage_share_id"] = storage_share_id
         super(ShareFile, __self__).__init__(
             'azure:storage/shareFile:ShareFile',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             content_disposition: Optional[pulumi.Input[str]] = None,
@@ -478,7 +478,7 @@ class ShareFile(pulumi.CustomResource):
         Get an existing ShareFile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content_disposition: Sets the file’s Content-Disposition header.
@@ -504,7 +504,7 @@ class ShareFile(pulumi.CustomResource):
         __props__.__dict__["path"] = path
         __props__.__dict__["source"] = source
         __props__.__dict__["storage_share_id"] = storage_share_id
-        return ShareFile(resource_name, opts=opts, __props__=__props__)
+        return ShareFile(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="contentDisposition")

@@ -499,7 +499,7 @@ class _PrivateCloudState:
 class PrivateCloud(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  internet_connection_enabled: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -521,7 +521,7 @@ class PrivateCloud(pulumi.CustomResource):
          $ pulumi import azure:avs/privateCloud:PrivateCloud example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/PrivateClouds/privateCloud1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] internet_connection_enabled: Is the Private Cluster connected to the internet? This field can not updated with `management_cluster.0.size` together.
                > **NOTE :** `internet_connection_enabled` and `management_cluster.0.size` cannot be updated at the same time.
@@ -539,7 +539,7 @@ class PrivateCloud(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: PrivateCloudArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -551,20 +551,20 @@ class PrivateCloud(pulumi.CustomResource):
          $ pulumi import azure:avs/privateCloud:PrivateCloud example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/PrivateClouds/privateCloud1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param PrivateCloudArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(PrivateCloudArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  internet_connection_enabled: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -617,12 +617,12 @@ class PrivateCloud(pulumi.CustomResource):
             __props__.__dict__["vmotion_subnet_cidr"] = None
         super(PrivateCloud, __self__).__init__(
             'azure:avs/privateCloud:PrivateCloud',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             circuits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateCloudCircuitArgs']]]]] = None,
@@ -648,7 +648,7 @@ class PrivateCloud(pulumi.CustomResource):
         Get an existing PrivateCloud resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateCloudCircuitArgs']]]] circuits: A `circuit` block as defined below.
@@ -696,7 +696,7 @@ class PrivateCloud(pulumi.CustomResource):
         __props__.__dict__["vcenter_password"] = vcenter_password
         __props__.__dict__["vcsa_endpoint"] = vcsa_endpoint
         __props__.__dict__["vmotion_subnet_cidr"] = vmotion_subnet_cidr
-        return PrivateCloud(resource_name, opts=opts, __props__=__props__)
+        return PrivateCloud(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

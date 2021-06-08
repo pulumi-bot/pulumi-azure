@@ -529,7 +529,7 @@ class _CacheState:
 class Cache(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cache_size_in_gb: Optional[pulumi.Input[int]] = None,
                  default_access_policy: Optional[pulumi.Input[pulumi.InputType['CacheDefaultAccessPolicyArgs']]] = None,
@@ -585,7 +585,7 @@ class Cache(pulumi.CustomResource):
          $ pulumi import azure:hpc/cache:Cache example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.StorageCache/caches/cacheName
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] cache_size_in_gb: The size of the HPC Cache, in GB. Possible values are `3072`, `6144`, `12288`, `24576`, and `49152`. Changing this forces a new resource to be created.
         :param pulumi.Input[pulumi.InputType['CacheDefaultAccessPolicyArgs']] default_access_policy: A `default_access_policy` block as defined below.
@@ -606,7 +606,7 @@ class Cache(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: CacheArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -647,20 +647,20 @@ class Cache(pulumi.CustomResource):
          $ pulumi import azure:hpc/cache:Cache example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.StorageCache/caches/cacheName
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param CacheArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(CacheArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cache_size_in_gb: Optional[pulumi.Input[int]] = None,
                  default_access_policy: Optional[pulumi.Input[pulumi.InputType['CacheDefaultAccessPolicyArgs']]] = None,
@@ -718,12 +718,12 @@ class Cache(pulumi.CustomResource):
             __props__.__dict__["mount_addresses"] = None
         super(Cache, __self__).__init__(
             'azure:hpc/cache:Cache',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cache_size_in_gb: Optional[pulumi.Input[int]] = None,
@@ -746,7 +746,7 @@ class Cache(pulumi.CustomResource):
         Get an existing Cache resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] cache_size_in_gb: The size of the HPC Cache, in GB. Possible values are `3072`, `6144`, `12288`, `24576`, and `49152`. Changing this forces a new resource to be created.
@@ -786,7 +786,7 @@ class Cache(pulumi.CustomResource):
         __props__.__dict__["sku_name"] = sku_name
         __props__.__dict__["subnet_id"] = subnet_id
         __props__.__dict__["tags"] = tags
-        return Cache(resource_name, opts=opts, __props__=__props__)
+        return Cache(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="cacheSizeInGb")

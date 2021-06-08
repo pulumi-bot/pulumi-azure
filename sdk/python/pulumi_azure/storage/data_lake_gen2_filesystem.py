@@ -158,7 +158,7 @@ class _DataLakeGen2FilesystemState:
 class DataLakeGen2Filesystem(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataLakeGen2FilesystemAceArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -199,7 +199,7 @@ class DataLakeGen2Filesystem(pulumi.CustomResource):
          $ pulumi import azure:storage/dataLakeGen2Filesystem:DataLakeGen2Filesystem queue1 https://account1.dfs.core.windows.net/fileSystem1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataLakeGen2FilesystemAceArgs']]]] aces: One or more `ace` blocks as defined below to specify the entries for the ACL for the path.
         :param pulumi.Input[str] name: The name of the Data Lake Gen2 File System which should be created within the Storage Account. Must be unique within the storage account the queue is located. Changing this forces a new resource to be created.
@@ -209,7 +209,7 @@ class DataLakeGen2Filesystem(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: DataLakeGen2FilesystemArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -246,20 +246,20 @@ class DataLakeGen2Filesystem(pulumi.CustomResource):
          $ pulumi import azure:storage/dataLakeGen2Filesystem:DataLakeGen2Filesystem queue1 https://account1.dfs.core.windows.net/fileSystem1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param DataLakeGen2FilesystemArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(DataLakeGen2FilesystemArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataLakeGen2FilesystemAceArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -285,12 +285,12 @@ class DataLakeGen2Filesystem(pulumi.CustomResource):
             __props__.__dict__["storage_account_id"] = storage_account_id
         super(DataLakeGen2Filesystem, __self__).__init__(
             'azure:storage/dataLakeGen2Filesystem:DataLakeGen2Filesystem',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             aces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataLakeGen2FilesystemAceArgs']]]]] = None,
@@ -301,7 +301,7 @@ class DataLakeGen2Filesystem(pulumi.CustomResource):
         Get an existing DataLakeGen2Filesystem resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataLakeGen2FilesystemAceArgs']]]] aces: One or more `ace` blocks as defined below to specify the entries for the ACL for the path.
@@ -317,7 +317,7 @@ class DataLakeGen2Filesystem(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["properties"] = properties
         __props__.__dict__["storage_account_id"] = storage_account_id
-        return DataLakeGen2Filesystem(resource_name, opts=opts, __props__=__props__)
+        return DataLakeGen2Filesystem(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

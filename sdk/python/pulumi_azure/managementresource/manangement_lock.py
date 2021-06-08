@@ -160,7 +160,7 @@ class ManangementLock(pulumi.CustomResource):
 
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  lock_level: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -222,7 +222,7 @@ class ManangementLock(pulumi.CustomResource):
          $ pulumi import azure:managementresource/manangementLock:ManangementLock lock1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Authorization/locks/lock1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] lock_level: Specifies the Level to be used for this Lock. Possible values are `CanNotDelete` and `ReadOnly`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Specifies the name of the Management Lock. Changing this forces a new resource to be created.
@@ -232,7 +232,7 @@ class ManangementLock(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ManangementLockArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -290,20 +290,20 @@ class ManangementLock(pulumi.CustomResource):
          $ pulumi import azure:managementresource/manangementLock:ManangementLock lock1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Authorization/locks/lock1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ManangementLockArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ManangementLockArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  lock_level: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -332,12 +332,12 @@ class ManangementLock(pulumi.CustomResource):
             __props__.__dict__["scope"] = scope
         super(ManangementLock, __self__).__init__(
             'azure:managementresource/manangementLock:ManangementLock',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             lock_level: Optional[pulumi.Input[str]] = None,
@@ -348,7 +348,7 @@ class ManangementLock(pulumi.CustomResource):
         Get an existing ManangementLock resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] lock_level: Specifies the Level to be used for this Lock. Possible values are `CanNotDelete` and `ReadOnly`. Changing this forces a new resource to be created.
@@ -364,7 +364,7 @@ class ManangementLock(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["notes"] = notes
         __props__.__dict__["scope"] = scope
-        return ManangementLock(resource_name, opts=opts, __props__=__props__)
+        return ManangementLock(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="lockLevel")

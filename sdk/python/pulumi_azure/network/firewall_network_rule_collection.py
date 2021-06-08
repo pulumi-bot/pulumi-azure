@@ -218,7 +218,7 @@ class _FirewallNetworkRuleCollectionState:
 class FirewallNetworkRuleCollection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  azure_firewall_name: Optional[pulumi.Input[str]] = None,
@@ -286,7 +286,7 @@ class FirewallNetworkRuleCollection(pulumi.CustomResource):
          $ pulumi import azure:network/firewallNetworkRuleCollection:FirewallNetworkRuleCollection example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/azureFirewalls/myfirewall/networkRuleCollections/mycollection
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Specifies the action the rule will apply to matching traffic. Possible values are `Allow` and `Deny`.
         :param pulumi.Input[str] azure_firewall_name: Specifies the name of the Firewall in which the Network Rule Collection should be created. Changing this forces a new resource to be created.
@@ -298,7 +298,7 @@ class FirewallNetworkRuleCollection(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: FirewallNetworkRuleCollectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -360,20 +360,20 @@ class FirewallNetworkRuleCollection(pulumi.CustomResource):
          $ pulumi import azure:network/firewallNetworkRuleCollection:FirewallNetworkRuleCollection example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/azureFirewalls/myfirewall/networkRuleCollections/mycollection
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param FirewallNetworkRuleCollectionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(FirewallNetworkRuleCollectionArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  azure_firewall_name: Optional[pulumi.Input[str]] = None,
@@ -411,12 +411,12 @@ class FirewallNetworkRuleCollection(pulumi.CustomResource):
             __props__.__dict__["rules"] = rules
         super(FirewallNetworkRuleCollection, __self__).__init__(
             'azure:network/firewallNetworkRuleCollection:FirewallNetworkRuleCollection',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             action: Optional[pulumi.Input[str]] = None,
@@ -429,7 +429,7 @@ class FirewallNetworkRuleCollection(pulumi.CustomResource):
         Get an existing FirewallNetworkRuleCollection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Specifies the action the rule will apply to matching traffic. Possible values are `Allow` and `Deny`.
@@ -449,7 +449,7 @@ class FirewallNetworkRuleCollection(pulumi.CustomResource):
         __props__.__dict__["priority"] = priority
         __props__.__dict__["resource_group_name"] = resource_group_name
         __props__.__dict__["rules"] = rules
-        return FirewallNetworkRuleCollection(resource_name, opts=opts, __props__=__props__)
+        return FirewallNetworkRuleCollection(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

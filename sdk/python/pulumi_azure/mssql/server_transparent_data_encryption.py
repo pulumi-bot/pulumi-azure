@@ -92,7 +92,7 @@ class _ServerTransparentDataEncryptionState:
 class ServerTransparentDataEncryption(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key_vault_key_id: Optional[pulumi.Input[str]] = None,
                  server_id: Optional[pulumi.Input[str]] = None,
@@ -143,7 +143,7 @@ class ServerTransparentDataEncryption(pulumi.CustomResource):
          $ pulumi import azure:mssql/serverTransparentDataEncryption:ServerTransparentDataEncryption example /subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/encryptionProtector/current
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_vault_key_id: To use customer managed keys from Azure Key Vault, provide the AKV Key ID. To use service managed keys, omit this field.
         :param pulumi.Input[str] server_id: Specifies the name of the MS SQL Server.
@@ -151,7 +151,7 @@ class ServerTransparentDataEncryption(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ServerTransparentDataEncryptionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -200,20 +200,20 @@ class ServerTransparentDataEncryption(pulumi.CustomResource):
          $ pulumi import azure:mssql/serverTransparentDataEncryption:ServerTransparentDataEncryption example /subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/encryptionProtector/current
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ServerTransparentDataEncryptionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ServerTransparentDataEncryptionArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key_vault_key_id: Optional[pulumi.Input[str]] = None,
                  server_id: Optional[pulumi.Input[str]] = None,
@@ -235,12 +235,12 @@ class ServerTransparentDataEncryption(pulumi.CustomResource):
             __props__.__dict__["server_id"] = server_id
         super(ServerTransparentDataEncryption, __self__).__init__(
             'azure:mssql/serverTransparentDataEncryption:ServerTransparentDataEncryption',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             key_vault_key_id: Optional[pulumi.Input[str]] = None,
@@ -249,7 +249,7 @@ class ServerTransparentDataEncryption(pulumi.CustomResource):
         Get an existing ServerTransparentDataEncryption resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_vault_key_id: To use customer managed keys from Azure Key Vault, provide the AKV Key ID. To use service managed keys, omit this field.
@@ -261,7 +261,7 @@ class ServerTransparentDataEncryption(pulumi.CustomResource):
 
         __props__.__dict__["key_vault_key_id"] = key_vault_key_id
         __props__.__dict__["server_id"] = server_id
-        return ServerTransparentDataEncryption(resource_name, opts=opts, __props__=__props__)
+        return ServerTransparentDataEncryption(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="keyVaultKeyId")

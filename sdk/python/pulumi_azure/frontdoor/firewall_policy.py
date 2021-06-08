@@ -382,7 +382,7 @@ class _FirewallPolicyState:
 class FirewallPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_block_response_body: Optional[pulumi.Input[str]] = None,
                  custom_block_response_status_code: Optional[pulumi.Input[int]] = None,
@@ -404,7 +404,7 @@ class FirewallPolicy(pulumi.CustomResource):
          $ pulumi import azure:frontdoor/firewallPolicy:FirewallPolicy example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Network/frontDoorWebApplicationFirewallPolicies/examplefdwafpolicy
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_block_response_body: If a `custom_rule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
         :param pulumi.Input[int] custom_block_response_status_code: If a `custom_rule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
@@ -420,7 +420,7 @@ class FirewallPolicy(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: FirewallPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -432,20 +432,20 @@ class FirewallPolicy(pulumi.CustomResource):
          $ pulumi import azure:frontdoor/firewallPolicy:FirewallPolicy example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-rg/providers/Microsoft.Network/frontDoorWebApplicationFirewallPolicies/examplefdwafpolicy
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param FirewallPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(FirewallPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_block_response_body: Optional[pulumi.Input[str]] = None,
                  custom_block_response_status_code: Optional[pulumi.Input[int]] = None,
@@ -485,12 +485,12 @@ class FirewallPolicy(pulumi.CustomResource):
             __props__.__dict__["location"] = None
         super(FirewallPolicy, __self__).__init__(
             'azure:frontdoor/firewallPolicy:FirewallPolicy',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             custom_block_response_body: Optional[pulumi.Input[str]] = None,
@@ -509,7 +509,7 @@ class FirewallPolicy(pulumi.CustomResource):
         Get an existing FirewallPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_block_response_body: If a `custom_rule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
@@ -541,7 +541,7 @@ class FirewallPolicy(pulumi.CustomResource):
         __props__.__dict__["redirect_url"] = redirect_url
         __props__.__dict__["resource_group_name"] = resource_group_name
         __props__.__dict__["tags"] = tags
-        return FirewallPolicy(resource_name, opts=opts, __props__=__props__)
+        return FirewallPolicy(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="customBlockResponseBody")

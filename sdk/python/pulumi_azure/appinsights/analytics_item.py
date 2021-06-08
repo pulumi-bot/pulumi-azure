@@ -265,7 +265,7 @@ class _AnalyticsItemState:
 class AnalyticsItem(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_insights_id: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
@@ -305,7 +305,7 @@ class AnalyticsItem(pulumi.CustomResource):
 
          To find the Analytics Item ID you can query the REST API using the [`az rest` CLI command](https://docs.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest#az-rest), e.g. az rest --method GET --uri "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/microsoft.insights/components/appinsightstest/analyticsItems?api-version=2015-05-01"
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_insights_id: The ID of the Application Insights component on which the Analytics Item exists. Changing this forces a new resource to be created.
         :param pulumi.Input[str] content: The content for the Analytics Item, for example the query text if `type` is `query`.
@@ -317,7 +317,7 @@ class AnalyticsItem(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: AnalyticsItemArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -351,20 +351,20 @@ class AnalyticsItem(pulumi.CustomResource):
 
          To find the Analytics Item ID you can query the REST API using the [`az rest` CLI command](https://docs.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest#az-rest), e.g. az rest --method GET --uri "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/microsoft.insights/components/appinsightstest/analyticsItems?api-version=2015-05-01"
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param AnalyticsItemArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(AnalyticsItemArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_insights_id: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
@@ -403,12 +403,12 @@ class AnalyticsItem(pulumi.CustomResource):
             __props__.__dict__["version"] = None
         super(AnalyticsItem, __self__).__init__(
             'azure:appinsights/analyticsItem:AnalyticsItem',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             application_insights_id: Optional[pulumi.Input[str]] = None,
@@ -424,7 +424,7 @@ class AnalyticsItem(pulumi.CustomResource):
         Get an existing AnalyticsItem resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_insights_id: The ID of the Application Insights component on which the Analytics Item exists. Changing this forces a new resource to be created.
@@ -450,7 +450,7 @@ class AnalyticsItem(pulumi.CustomResource):
         __props__.__dict__["time_modified"] = time_modified
         __props__.__dict__["type"] = type
         __props__.__dict__["version"] = version
-        return AnalyticsItem(resource_name, opts=opts, __props__=__props__)
+        return AnalyticsItem(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="applicationInsightsId")

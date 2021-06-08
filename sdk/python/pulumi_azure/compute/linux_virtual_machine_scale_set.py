@@ -1417,7 +1417,7 @@ class _LinuxVirtualMachineScaleSetState:
 class LinuxVirtualMachineScaleSet(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_capabilities: Optional[pulumi.Input[pulumi.InputType['LinuxVirtualMachineScaleSetAdditionalCapabilitiesArgs']]] = None,
                  admin_password: Optional[pulumi.Input[str]] = None,
@@ -1528,7 +1528,7 @@ class LinuxVirtualMachineScaleSet(pulumi.CustomResource):
          $ pulumi import azure:compute/linuxVirtualMachineScaleSet:LinuxVirtualMachineScaleSet example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/Microsoft.Compute/virtualMachineScaleSets/scaleset1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['LinuxVirtualMachineScaleSetAdditionalCapabilitiesArgs']] additional_capabilities: A `additional_capabilities` block as defined below.
         :param pulumi.Input[str] admin_password: The Password which should be used for the local-administrator on this Virtual Machine. Changing this forces a new resource to be created.
@@ -1577,7 +1577,7 @@ class LinuxVirtualMachineScaleSet(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: LinuxVirtualMachineScaleSetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -1645,20 +1645,20 @@ class LinuxVirtualMachineScaleSet(pulumi.CustomResource):
          $ pulumi import azure:compute/linuxVirtualMachineScaleSet:LinuxVirtualMachineScaleSet example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/Microsoft.Compute/virtualMachineScaleSets/scaleset1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param LinuxVirtualMachineScaleSetArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(LinuxVirtualMachineScaleSetArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_capabilities: Optional[pulumi.Input[pulumi.InputType['LinuxVirtualMachineScaleSetAdditionalCapabilitiesArgs']]] = None,
                  admin_password: Optional[pulumi.Input[str]] = None,
@@ -1773,12 +1773,12 @@ class LinuxVirtualMachineScaleSet(pulumi.CustomResource):
             __props__.__dict__["unique_id"] = None
         super(LinuxVirtualMachineScaleSet, __self__).__init__(
             'azure:compute/linuxVirtualMachineScaleSet:LinuxVirtualMachineScaleSet',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_capabilities: Optional[pulumi.Input[pulumi.InputType['LinuxVirtualMachineScaleSetAdditionalCapabilitiesArgs']]] = None,
@@ -1829,7 +1829,7 @@ class LinuxVirtualMachineScaleSet(pulumi.CustomResource):
         Get an existing LinuxVirtualMachineScaleSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['LinuxVirtualMachineScaleSetAdditionalCapabilitiesArgs']] additional_capabilities: A `additional_capabilities` block as defined below.
@@ -1925,7 +1925,7 @@ class LinuxVirtualMachineScaleSet(pulumi.CustomResource):
         __props__.__dict__["upgrade_mode"] = upgrade_mode
         __props__.__dict__["zone_balance"] = zone_balance
         __props__.__dict__["zones"] = zones
-        return LinuxVirtualMachineScaleSet(resource_name, opts=opts, __props__=__props__)
+        return LinuxVirtualMachineScaleSet(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="additionalCapabilities")

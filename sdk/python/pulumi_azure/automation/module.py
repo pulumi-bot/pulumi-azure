@@ -156,7 +156,7 @@ class _ModuleState:
 class Module(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automation_account_name: Optional[pulumi.Input[str]] = None,
                  module_link: Optional[pulumi.Input[pulumi.InputType['ModuleModuleLinkArgs']]] = None,
@@ -174,7 +174,7 @@ class Module(pulumi.CustomResource):
          $ pulumi import azure:automation/module:Module module1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Automation/automationAccounts/account1/modules/module1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] automation_account_name: The name of the automation account in which the Module is created. Changing this forces a new resource to be created.
         :param pulumi.Input[pulumi.InputType['ModuleModuleLinkArgs']] module_link: The published Module link.
@@ -184,7 +184,7 @@ class Module(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ModuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -198,20 +198,20 @@ class Module(pulumi.CustomResource):
          $ pulumi import azure:automation/module:Module module1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Automation/automationAccounts/account1/modules/module1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ModuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ModuleArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automation_account_name: Optional[pulumi.Input[str]] = None,
                  module_link: Optional[pulumi.Input[pulumi.InputType['ModuleModuleLinkArgs']]] = None,
@@ -241,12 +241,12 @@ class Module(pulumi.CustomResource):
             __props__.__dict__["resource_group_name"] = resource_group_name
         super(Module, __self__).__init__(
             'azure:automation/module:Module',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             automation_account_name: Optional[pulumi.Input[str]] = None,
@@ -257,7 +257,7 @@ class Module(pulumi.CustomResource):
         Get an existing Module resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] automation_account_name: The name of the automation account in which the Module is created. Changing this forces a new resource to be created.
@@ -273,7 +273,7 @@ class Module(pulumi.CustomResource):
         __props__.__dict__["module_link"] = module_link
         __props__.__dict__["name"] = name
         __props__.__dict__["resource_group_name"] = resource_group_name
-        return Module(resource_name, opts=opts, __props__=__props__)
+        return Module(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="automationAccountName")

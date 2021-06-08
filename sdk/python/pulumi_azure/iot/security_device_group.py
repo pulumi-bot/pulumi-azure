@@ -158,7 +158,7 @@ class _SecurityDeviceGroupState:
 class SecurityDeviceGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_rule: Optional[pulumi.Input[pulumi.InputType['SecurityDeviceGroupAllowRuleArgs']]] = None,
                  iothub_id: Optional[pulumi.Input[str]] = None,
@@ -209,7 +209,7 @@ class SecurityDeviceGroup(pulumi.CustomResource):
          $ pulumi import azure:iot/securityDeviceGroup:SecurityDeviceGroup example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resGroup1/providers/Microsoft.Devices/iotHubs/hub1/providers/Microsoft.Security/deviceSecurityGroups/group1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['SecurityDeviceGroupAllowRuleArgs']] allow_rule: an `allow_rule` blocks as defined below.
         :param pulumi.Input[str] iothub_id: The ID of the IoT Hub which to link the Security Device Group to. Changing this forces a new resource to be created.
@@ -219,7 +219,7 @@ class SecurityDeviceGroup(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: SecurityDeviceGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -266,20 +266,20 @@ class SecurityDeviceGroup(pulumi.CustomResource):
          $ pulumi import azure:iot/securityDeviceGroup:SecurityDeviceGroup example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resGroup1/providers/Microsoft.Devices/iotHubs/hub1/providers/Microsoft.Security/deviceSecurityGroups/group1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param SecurityDeviceGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(SecurityDeviceGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_rule: Optional[pulumi.Input[pulumi.InputType['SecurityDeviceGroupAllowRuleArgs']]] = None,
                  iothub_id: Optional[pulumi.Input[str]] = None,
@@ -305,12 +305,12 @@ class SecurityDeviceGroup(pulumi.CustomResource):
             __props__.__dict__["range_rules"] = range_rules
         super(SecurityDeviceGroup, __self__).__init__(
             'azure:iot/securityDeviceGroup:SecurityDeviceGroup',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_rule: Optional[pulumi.Input[pulumi.InputType['SecurityDeviceGroupAllowRuleArgs']]] = None,
@@ -321,7 +321,7 @@ class SecurityDeviceGroup(pulumi.CustomResource):
         Get an existing SecurityDeviceGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['SecurityDeviceGroupAllowRuleArgs']] allow_rule: an `allow_rule` blocks as defined below.
@@ -337,7 +337,7 @@ class SecurityDeviceGroup(pulumi.CustomResource):
         __props__.__dict__["iothub_id"] = iothub_id
         __props__.__dict__["name"] = name
         __props__.__dict__["range_rules"] = range_rules
-        return SecurityDeviceGroup(resource_name, opts=opts, __props__=__props__)
+        return SecurityDeviceGroup(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="allowRule")

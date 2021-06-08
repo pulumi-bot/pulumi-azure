@@ -247,7 +247,7 @@ class _NetworkMappingState:
 class NetworkMapping(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  recovery_vault_name: Optional[pulumi.Input[str]] = None,
@@ -307,7 +307,7 @@ class NetworkMapping(pulumi.CustomResource):
          $ pulumi import azure:siterecovery/networkMapping:NetworkMapping mymapping /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.RecoveryServices/vaults/recovery-vault-name/replicationFabrics/primary-fabric-name/replicationNetworks/azureNetwork/replicationNetworkMappings/mapping-name
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the network mapping.
         :param pulumi.Input[str] recovery_vault_name: The name of the vault that should be updated.
@@ -320,7 +320,7 @@ class NetworkMapping(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: NetworkMappingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -373,20 +373,20 @@ class NetworkMapping(pulumi.CustomResource):
          $ pulumi import azure:siterecovery/networkMapping:NetworkMapping mymapping /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.RecoveryServices/vaults/recovery-vault-name/replicationFabrics/primary-fabric-name/replicationNetworks/azureNetwork/replicationNetworkMappings/mapping-name
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param NetworkMappingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(NetworkMappingArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  recovery_vault_name: Optional[pulumi.Input[str]] = None,
@@ -428,12 +428,12 @@ class NetworkMapping(pulumi.CustomResource):
             __props__.__dict__["target_recovery_fabric_name"] = target_recovery_fabric_name
         super(NetworkMapping, __self__).__init__(
             'azure:siterecovery/networkMapping:NetworkMapping',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -447,7 +447,7 @@ class NetworkMapping(pulumi.CustomResource):
         Get an existing NetworkMapping resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the network mapping.
@@ -469,7 +469,7 @@ class NetworkMapping(pulumi.CustomResource):
         __props__.__dict__["source_recovery_fabric_name"] = source_recovery_fabric_name
         __props__.__dict__["target_network_id"] = target_network_id
         __props__.__dict__["target_recovery_fabric_name"] = target_recovery_fabric_name
-        return NetworkMapping(resource_name, opts=opts, __props__=__props__)
+        return NetworkMapping(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

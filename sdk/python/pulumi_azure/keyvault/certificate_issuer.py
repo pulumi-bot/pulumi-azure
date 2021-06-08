@@ -253,7 +253,7 @@ class _CertificateIssuerState:
 class CertificateIssuer(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  admins: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateIssuerAdminArgs']]]]] = None,
@@ -295,7 +295,7 @@ class CertificateIssuer(pulumi.CustomResource):
          $ pulumi import azure:keyvault/certificateIssuer:CertificateIssuer example "https://key-vault-name.vault.azure.net/certificates/issuers/example"
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account number with the third-party Certificate Issuer.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateIssuerAdminArgs']]]] admins: One or more `admin` blocks as defined below.
@@ -308,7 +308,7 @@ class CertificateIssuer(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: CertificateIssuerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -343,20 +343,20 @@ class CertificateIssuer(pulumi.CustomResource):
          $ pulumi import azure:keyvault/certificateIssuer:CertificateIssuer example "https://key-vault-name.vault.azure.net/certificates/issuers/example"
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param CertificateIssuerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(CertificateIssuerArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  admins: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateIssuerAdminArgs']]]]] = None,
@@ -390,12 +390,12 @@ class CertificateIssuer(pulumi.CustomResource):
             __props__.__dict__["provider_name"] = provider_name
         super(CertificateIssuer, __self__).__init__(
             'azure:keyvault/certificateIssuer:CertificateIssuer',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
@@ -409,7 +409,7 @@ class CertificateIssuer(pulumi.CustomResource):
         Get an existing CertificateIssuer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account number with the third-party Certificate Issuer.
@@ -431,7 +431,7 @@ class CertificateIssuer(pulumi.CustomResource):
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["password"] = password
         __props__.__dict__["provider_name"] = provider_name
-        return CertificateIssuer(resource_name, opts=opts, __props__=__props__)
+        return CertificateIssuer(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")

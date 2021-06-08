@@ -248,7 +248,7 @@ class _ConnectionClassicCertificateState:
 class ConnectionClassicCertificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automation_account_name: Optional[pulumi.Input[str]] = None,
                  certificate_asset_name: Optional[pulumi.Input[str]] = None,
@@ -269,7 +269,7 @@ class ConnectionClassicCertificate(pulumi.CustomResource):
          $ pulumi import azure:automation/connectionClassicCertificate:ConnectionClassicCertificate conn1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Automation/automationAccounts/account1/connections/conn1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] automation_account_name: The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] certificate_asset_name: The name of the certificate asset.
@@ -282,7 +282,7 @@ class ConnectionClassicCertificate(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ConnectionClassicCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -296,20 +296,20 @@ class ConnectionClassicCertificate(pulumi.CustomResource):
          $ pulumi import azure:automation/connectionClassicCertificate:ConnectionClassicCertificate conn1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Automation/automationAccounts/account1/connections/conn1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ConnectionClassicCertificateArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ConnectionClassicCertificateArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automation_account_name: Optional[pulumi.Input[str]] = None,
                  certificate_asset_name: Optional[pulumi.Input[str]] = None,
@@ -349,12 +349,12 @@ class ConnectionClassicCertificate(pulumi.CustomResource):
             __props__.__dict__["subscription_name"] = subscription_name
         super(ConnectionClassicCertificate, __self__).__init__(
             'azure:automation/connectionClassicCertificate:ConnectionClassicCertificate',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             automation_account_name: Optional[pulumi.Input[str]] = None,
@@ -368,7 +368,7 @@ class ConnectionClassicCertificate(pulumi.CustomResource):
         Get an existing ConnectionClassicCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] automation_account_name: The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.
@@ -390,7 +390,7 @@ class ConnectionClassicCertificate(pulumi.CustomResource):
         __props__.__dict__["resource_group_name"] = resource_group_name
         __props__.__dict__["subscription_id"] = subscription_id
         __props__.__dict__["subscription_name"] = subscription_name
-        return ConnectionClassicCertificate(resource_name, opts=opts, __props__=__props__)
+        return ConnectionClassicCertificate(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="automationAccountName")

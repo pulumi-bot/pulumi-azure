@@ -319,7 +319,7 @@ class SubscriptionRule(pulumi.CustomResource):
 
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  correlation_filter: Optional[pulumi.Input[pulumi.InputType['SubscriptionRuleCorrelationFilterArgs']]] = None,
@@ -412,7 +412,7 @@ class SubscriptionRule(pulumi.CustomResource):
          $ pulumi import azure:eventhub/subscriptionRule:SubscriptionRule example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/microsoft.servicebus/namespaces/sbns1/topics/sntopic1/subscriptions/sbsub1/rules/sbrule1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Represents set of actions written in SQL language-based syntax that is performed against a BrokeredMessage.
         :param pulumi.Input[pulumi.InputType['SubscriptionRuleCorrelationFilterArgs']] correlation_filter: A `correlation_filter` block as documented below to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `CorrelationFilter`.
@@ -427,7 +427,7 @@ class SubscriptionRule(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: SubscriptionRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -511,20 +511,20 @@ class SubscriptionRule(pulumi.CustomResource):
          $ pulumi import azure:eventhub/subscriptionRule:SubscriptionRule example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/microsoft.servicebus/namespaces/sbns1/topics/sntopic1/subscriptions/sbsub1/rules/sbrule1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param SubscriptionRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(SubscriptionRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  correlation_filter: Optional[pulumi.Input[pulumi.InputType['SubscriptionRuleCorrelationFilterArgs']]] = None,
@@ -569,12 +569,12 @@ class SubscriptionRule(pulumi.CustomResource):
             __props__.__dict__["topic_name"] = topic_name
         super(SubscriptionRule, __self__).__init__(
             'azure:eventhub/subscriptionRule:SubscriptionRule',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             action: Optional[pulumi.Input[str]] = None,
@@ -590,7 +590,7 @@ class SubscriptionRule(pulumi.CustomResource):
         Get an existing SubscriptionRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Represents set of actions written in SQL language-based syntax that is performed against a BrokeredMessage.
@@ -616,7 +616,7 @@ class SubscriptionRule(pulumi.CustomResource):
         __props__.__dict__["sql_filter"] = sql_filter
         __props__.__dict__["subscription_name"] = subscription_name
         __props__.__dict__["topic_name"] = topic_name
-        return SubscriptionRule(resource_name, opts=opts, __props__=__props__)
+        return SubscriptionRule(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

@@ -311,7 +311,7 @@ class _IotHubDataConnectionState:
 class IotHubDataConnection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  consumer_group: Optional[pulumi.Input[str]] = None,
@@ -384,7 +384,7 @@ class IotHubDataConnection(pulumi.CustomResource):
          $ pulumi import azure:kusto/iotHubDataConnection:IotHubDataConnection example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Kusto/Clusters/cluster1/Databases/database1/DataConnections/dataConnection1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_name: Specifies the name of the Kusto Cluster this data connection will be added to. Changing this forces a new resource to be created.
         :param pulumi.Input[str] consumer_group: Specifies the IotHub consumer group this data connection will use for ingestion. Changing this forces a new resource to be created.
@@ -399,7 +399,7 @@ class IotHubDataConnection(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: IotHubDataConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -463,20 +463,20 @@ class IotHubDataConnection(pulumi.CustomResource):
          $ pulumi import azure:kusto/iotHubDataConnection:IotHubDataConnection example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Kusto/Clusters/cluster1/Databases/database1/DataConnections/dataConnection1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param IotHubDataConnectionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(IotHubDataConnectionArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  consumer_group: Optional[pulumi.Input[str]] = None,
@@ -522,12 +522,12 @@ class IotHubDataConnection(pulumi.CustomResource):
             __props__.__dict__["shared_access_policy_name"] = shared_access_policy_name
         super(IotHubDataConnection, __self__).__init__(
             'azure:kusto/iotHubDataConnection:IotHubDataConnection',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
@@ -543,7 +543,7 @@ class IotHubDataConnection(pulumi.CustomResource):
         Get an existing IotHubDataConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_name: Specifies the name of the Kusto Cluster this data connection will be added to. Changing this forces a new resource to be created.
@@ -569,7 +569,7 @@ class IotHubDataConnection(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["resource_group_name"] = resource_group_name
         __props__.__dict__["shared_access_policy_name"] = shared_access_policy_name
-        return IotHubDataConnection(resource_name, opts=opts, __props__=__props__)
+        return IotHubDataConnection(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="clusterName")

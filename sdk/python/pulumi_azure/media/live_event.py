@@ -480,7 +480,7 @@ class _LiveEventState:
 class LiveEvent(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_start_enabled: Optional[pulumi.Input[bool]] = None,
                  cross_site_access_policy: Optional[pulumi.Input[pulumi.InputType['LiveEventCrossSiteAccessPolicyArgs']]] = None,
@@ -558,7 +558,7 @@ class LiveEvent(pulumi.CustomResource):
          $ pulumi import azure:media/liveEvent:LiveEvent example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resGroup1/providers/Microsoft.Media/mediaservices/account1/liveevents/event1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_start_enabled: The flag indicates if the resource should be automatically started on creation. Default is `false`.
         :param pulumi.Input[pulumi.InputType['LiveEventCrossSiteAccessPolicyArgs']] cross_site_access_policy: A `cross_site_access_policy` block as defined below.
@@ -579,7 +579,7 @@ class LiveEvent(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: LiveEventArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -643,20 +643,20 @@ class LiveEvent(pulumi.CustomResource):
          $ pulumi import azure:media/liveEvent:LiveEvent example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resGroup1/providers/Microsoft.Media/mediaservices/account1/liveevents/event1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param LiveEventArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(LiveEventArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_start_enabled: Optional[pulumi.Input[bool]] = None,
                  cross_site_access_policy: Optional[pulumi.Input[pulumi.InputType['LiveEventCrossSiteAccessPolicyArgs']]] = None,
@@ -706,12 +706,12 @@ class LiveEvent(pulumi.CustomResource):
             __props__.__dict__["use_static_hostname"] = use_static_hostname
         super(LiveEvent, __self__).__init__(
             'azure:media/liveEvent:LiveEvent',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_start_enabled: Optional[pulumi.Input[bool]] = None,
@@ -732,7 +732,7 @@ class LiveEvent(pulumi.CustomResource):
         Get an existing LiveEvent resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_start_enabled: The flag indicates if the resource should be automatically started on creation. Default is `false`.
@@ -769,7 +769,7 @@ class LiveEvent(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["transcription_languages"] = transcription_languages
         __props__.__dict__["use_static_hostname"] = use_static_hostname
-        return LiveEvent(resource_name, opts=opts, __props__=__props__)
+        return LiveEvent(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="autoStartEnabled")

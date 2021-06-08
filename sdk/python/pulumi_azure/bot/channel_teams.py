@@ -187,7 +187,7 @@ class _ChannelTeamsState:
 class ChannelTeams(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bot_name: Optional[pulumi.Input[str]] = None,
                  calling_web_hook: Optional[pulumi.Input[str]] = None,
@@ -227,7 +227,7 @@ class ChannelTeams(pulumi.CustomResource):
          $ pulumi import azure:bot/channelTeams:ChannelTeams example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example/providers/Microsoft.BotService/botServices/example/channels/MsTeamsChannel
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bot_name: The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
         :param pulumi.Input[str] calling_web_hook: Specifies the webhook for Microsoft Teams channel calls.
@@ -238,7 +238,7 @@ class ChannelTeams(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ChannelTeamsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -273,20 +273,20 @@ class ChannelTeams(pulumi.CustomResource):
          $ pulumi import azure:bot/channelTeams:ChannelTeams example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example/providers/Microsoft.BotService/botServices/example/channels/MsTeamsChannel
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ChannelTeamsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ChannelTeamsArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bot_name: Optional[pulumi.Input[str]] = None,
                  calling_web_hook: Optional[pulumi.Input[str]] = None,
@@ -316,12 +316,12 @@ class ChannelTeams(pulumi.CustomResource):
             __props__.__dict__["resource_group_name"] = resource_group_name
         super(ChannelTeams, __self__).__init__(
             'azure:bot/channelTeams:ChannelTeams',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bot_name: Optional[pulumi.Input[str]] = None,
@@ -333,7 +333,7 @@ class ChannelTeams(pulumi.CustomResource):
         Get an existing ChannelTeams resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bot_name: The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
@@ -351,7 +351,7 @@ class ChannelTeams(pulumi.CustomResource):
         __props__.__dict__["enable_calling"] = enable_calling
         __props__.__dict__["location"] = location
         __props__.__dict__["resource_group_name"] = resource_group_name
-        return ChannelTeams(resource_name, opts=opts, __props__=__props__)
+        return ChannelTeams(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="botName")
