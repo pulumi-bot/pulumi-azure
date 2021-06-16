@@ -13,26 +13,26 @@ namespace Pulumi.Azure.Outputs
     [OutputType]
     public sealed class ProviderFeatures
     {
-        public readonly Outputs.ProviderFeaturesKeyVault? KeyVault;
-        public readonly Outputs.ProviderFeaturesLogAnalyticsWorkspace? LogAnalyticsWorkspace;
-        public readonly Outputs.ProviderFeaturesNetwork? Network;
-        public readonly Outputs.ProviderFeaturesTemplateDeployment? TemplateDeployment;
-        public readonly Outputs.ProviderFeaturesVirtualMachine? VirtualMachine;
-        public readonly Outputs.ProviderFeaturesVirtualMachineScaleSet? VirtualMachineScaleSet;
+        public readonly Input<Outputs.ProviderFeaturesKeyVault>? KeyVault;
+        public readonly Input<Outputs.ProviderFeaturesLogAnalyticsWorkspace>? LogAnalyticsWorkspace;
+        public readonly Input<Outputs.ProviderFeaturesNetwork>? Network;
+        public readonly Input<Outputs.ProviderFeaturesTemplateDeployment>? TemplateDeployment;
+        public readonly Input<Outputs.ProviderFeaturesVirtualMachine>? VirtualMachine;
+        public readonly Input<Outputs.ProviderFeaturesVirtualMachineScaleSet>? VirtualMachineScaleSet;
 
         [OutputConstructor]
         private ProviderFeatures(
-            Outputs.ProviderFeaturesKeyVault? keyVault,
+            Input<Outputs.ProviderFeaturesKeyVault>? keyVault,
 
-            Outputs.ProviderFeaturesLogAnalyticsWorkspace? logAnalyticsWorkspace,
+            Input<Outputs.ProviderFeaturesLogAnalyticsWorkspace>? logAnalyticsWorkspace,
 
-            Outputs.ProviderFeaturesNetwork? network,
+            Input<Outputs.ProviderFeaturesNetwork>? network,
 
-            Outputs.ProviderFeaturesTemplateDeployment? templateDeployment,
+            Input<Outputs.ProviderFeaturesTemplateDeployment>? templateDeployment,
 
-            Outputs.ProviderFeaturesVirtualMachine? virtualMachine,
+            Input<Outputs.ProviderFeaturesVirtualMachine>? virtualMachine,
 
-            Outputs.ProviderFeaturesVirtualMachineScaleSet? virtualMachineScaleSet)
+            Input<Outputs.ProviderFeaturesVirtualMachineScaleSet>? virtualMachineScaleSet)
         {
             KeyVault = keyVault;
             LogAnalyticsWorkspace = logAnalyticsWorkspace;

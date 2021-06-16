@@ -104,13 +104,13 @@ skip_credentials_validation = __config__.get('skipCredentialsValidation')
 [DEPRECATED] This will cause the AzureRM Provider to skip verifying the credentials being used are valid.
 """
 
-skip_provider_registration = __config__.get('skipProviderRegistration') or (_utilities.get_env_bool('ARM_SKIP_PROVIDER_REGISTRATION') or False)
+skip_provider_registration = __config__.get('skipProviderRegistration') or (_utilities.get_env('ARM_SKIP_PROVIDER_REGISTRATION') or False)
 """
 Should the AzureRM Provider skip registering all of the Resource Providers that it supports, if they're not already
 registered?
 """
 
-storage_use_azuread = __config__.get('storageUseAzuread') or (_utilities.get_env_bool('ARM_STORAGE_USE_AZUREAD') or False)
+storage_use_azuread = __config__.get('storageUseAzuread') or (_utilities.get_env('ARM_STORAGE_USE_AZUREAD') or False)
 """
 Should the AzureRM Provider use AzureAD to access the Storage Data Plane API's?
 """
