@@ -99,11 +99,11 @@ class ProviderArgs:
         if skip_credentials_validation is not None:
             pulumi.set(__self__, "skip_credentials_validation", skip_credentials_validation)
         if skip_provider_registration is None:
-            skip_provider_registration = (_utilities.get_env_bool('ARM_SKIP_PROVIDER_REGISTRATION') or False)
+            skip_provider_registration = (_utilities.get_env('ARM_SKIP_PROVIDER_REGISTRATION') or False)
         if skip_provider_registration is not None:
             pulumi.set(__self__, "skip_provider_registration", skip_provider_registration)
         if storage_use_azuread is None:
-            storage_use_azuread = (_utilities.get_env_bool('ARM_STORAGE_USE_AZUREAD') or False)
+            storage_use_azuread = (_utilities.get_env('ARM_STORAGE_USE_AZUREAD') or False)
         if storage_use_azuread is not None:
             pulumi.set(__self__, "storage_use_azuread", storage_use_azuread)
         if subscription_id is None:
@@ -458,137 +458,45 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["auxiliary_tenant_ids"] = pulumi.Output.from_input(auxiliary_tenant_ids).apply(pulumi.runtime.to_json) if auxiliary_tenant_ids is not None else None
-            __props__.__dict__["client_certificate_password"] = client_certificate_password
-            __props__.__dict__["client_certificate_path"] = client_certificate_path
-            __props__.__dict__["client_id"] = client_id
-            __props__.__dict__["client_secret"] = client_secret
+            __props__.__dict__["client_certificate_password"] = pulumi.Output.from_input(client_certificate_password).apply(pulumi.runtime.to_json) if client_certificate_password is not None else None
+            __props__.__dict__["client_certificate_path"] = pulumi.Output.from_input(client_certificate_path).apply(pulumi.runtime.to_json) if client_certificate_path is not None else None
+            __props__.__dict__["client_id"] = pulumi.Output.from_input(client_id).apply(pulumi.runtime.to_json) if client_id is not None else None
+            __props__.__dict__["client_secret"] = pulumi.Output.from_input(client_secret).apply(pulumi.runtime.to_json) if client_secret is not None else None
             __props__.__dict__["disable_correlation_request_id"] = pulumi.Output.from_input(disable_correlation_request_id).apply(pulumi.runtime.to_json) if disable_correlation_request_id is not None else None
             __props__.__dict__["disable_terraform_partner_id"] = pulumi.Output.from_input(disable_terraform_partner_id).apply(pulumi.runtime.to_json) if disable_terraform_partner_id is not None else None
             if environment is None:
                 environment = (_utilities.get_env('AZURE_ENVIRONMENT', 'ARM_ENVIRONMENT') or 'public')
-            __props__.__dict__["environment"] = environment
+            __props__.__dict__["environment"] = pulumi.Output.from_input(environment).apply(pulumi.runtime.to_json) if environment is not None else None
             __props__.__dict__["features"] = pulumi.Output.from_input(features).apply(pulumi.runtime.to_json) if features is not None else None
             if metadata_host is None:
                 metadata_host = _utilities.get_env('ARM_METADATA_HOSTNAME')
-            __props__.__dict__["metadata_host"] = metadata_host
+            __props__.__dict__["metadata_host"] = pulumi.Output.from_input(metadata_host).apply(pulumi.runtime.to_json) if metadata_host is not None else None
             if metadata_url is None:
                 metadata_url = _utilities.get_env('ARM_METADATA_URL')
             if metadata_url is not None and not opts.urn:
                 warnings.warn("""use `metadata_host` instead""", DeprecationWarning)
                 pulumi.log.warn("""metadata_url is deprecated: use `metadata_host` instead""")
-            __props__.__dict__["metadata_url"] = metadata_url
-            __props__.__dict__["msi_endpoint"] = msi_endpoint
-            __props__.__dict__["partner_id"] = partner_id
+            __props__.__dict__["metadata_url"] = pulumi.Output.from_input(metadata_url).apply(pulumi.runtime.to_json) if metadata_url is not None else None
+            __props__.__dict__["msi_endpoint"] = pulumi.Output.from_input(msi_endpoint).apply(pulumi.runtime.to_json) if msi_endpoint is not None else None
+            __props__.__dict__["partner_id"] = pulumi.Output.from_input(partner_id).apply(pulumi.runtime.to_json) if partner_id is not None else None
             if skip_credentials_validation is not None and not opts.urn:
                 warnings.warn("""This field is deprecated and will be removed in version 3.0 of the Azure Provider""", DeprecationWarning)
                 pulumi.log.warn("""skip_credentials_validation is deprecated: This field is deprecated and will be removed in version 3.0 of the Azure Provider""")
             __props__.__dict__["skip_credentials_validation"] = pulumi.Output.from_input(skip_credentials_validation).apply(pulumi.runtime.to_json) if skip_credentials_validation is not None else None
             if skip_provider_registration is None:
-                skip_provider_registration = (_utilities.get_env_bool('ARM_SKIP_PROVIDER_REGISTRATION') or False)
+                skip_provider_registration = (_utilities.get_env('ARM_SKIP_PROVIDER_REGISTRATION') or False)
             __props__.__dict__["skip_provider_registration"] = pulumi.Output.from_input(skip_provider_registration).apply(pulumi.runtime.to_json) if skip_provider_registration is not None else None
             if storage_use_azuread is None:
-                storage_use_azuread = (_utilities.get_env_bool('ARM_STORAGE_USE_AZUREAD') or False)
+                storage_use_azuread = (_utilities.get_env('ARM_STORAGE_USE_AZUREAD') or False)
             __props__.__dict__["storage_use_azuread"] = pulumi.Output.from_input(storage_use_azuread).apply(pulumi.runtime.to_json) if storage_use_azuread is not None else None
             if subscription_id is None:
                 subscription_id = (_utilities.get_env('ARM_SUBSCRIPTION_ID') or '')
-            __props__.__dict__["subscription_id"] = subscription_id
-            __props__.__dict__["tenant_id"] = tenant_id
+            __props__.__dict__["subscription_id"] = pulumi.Output.from_input(subscription_id).apply(pulumi.runtime.to_json) if subscription_id is not None else None
+            __props__.__dict__["tenant_id"] = pulumi.Output.from_input(tenant_id).apply(pulumi.runtime.to_json) if tenant_id is not None else None
             __props__.__dict__["use_msi"] = pulumi.Output.from_input(use_msi).apply(pulumi.runtime.to_json) if use_msi is not None else None
         super(Provider, __self__).__init__(
             'azure',
             resource_name,
             __props__,
             opts)
-
-    @property
-    @pulumi.getter(name="clientCertificatePassword")
-    def client_certificate_password(self) -> pulumi.Output[Optional[str]]:
-        """
-        The password associated with the Client Certificate. For use when authenticating as a Service Principal using a Client
-        Certificate
-        """
-        return pulumi.get(self, "client_certificate_password")
-
-    @property
-    @pulumi.getter(name="clientCertificatePath")
-    def client_certificate_path(self) -> pulumi.Output[Optional[str]]:
-        """
-        The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-        Principal using a Client Certificate.
-        """
-        return pulumi.get(self, "client_certificate_path")
-
-    @property
-    @pulumi.getter(name="clientId")
-    def client_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Client ID which should be used.
-        """
-        return pulumi.get(self, "client_id")
-
-    @property
-    @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Client Secret which should be used. For use When authenticating as a Service Principal using a Client Secret.
-        """
-        return pulumi.get(self, "client_secret")
-
-    @property
-    @pulumi.getter
-    def environment(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Cloud Environment which should be used. Possible values are public, usgovernment, german, and china. Defaults to
-        public.
-        """
-        return pulumi.get(self, "environment")
-
-    @property
-    @pulumi.getter(name="metadataHost")
-    def metadata_host(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Hostname which should be used for the Azure Metadata Service.
-        """
-        return pulumi.get(self, "metadata_host")
-
-    @property
-    @pulumi.getter(name="metadataUrl")
-    def metadata_url(self) -> pulumi.Output[Optional[str]]:
-        """
-        Deprecated - replaced by `metadata_host`.
-        """
-        return pulumi.get(self, "metadata_url")
-
-    @property
-    @pulumi.getter(name="msiEndpoint")
-    def msi_endpoint(self) -> pulumi.Output[Optional[str]]:
-        """
-        The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
-        automatically.
-        """
-        return pulumi.get(self, "msi_endpoint")
-
-    @property
-    @pulumi.getter(name="partnerId")
-    def partner_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
-        """
-        return pulumi.get(self, "partner_id")
-
-    @property
-    @pulumi.getter(name="subscriptionId")
-    def subscription_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Subscription ID which should be used.
-        """
-        return pulumi.get(self, "subscription_id")
-
-    @property
-    @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Tenant ID which should be used.
-        """
-        return pulumi.get(self, "tenant_id")
 
