@@ -7,44 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Manages a Kusto (also known as Azure Data Explorer) Attached Database Configuration
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const rg = new azure.core.ResourceGroup("rg", {location: "West Europe"});
- * const followerCluster = new azure.kusto.Cluster("followerCluster", {
- *     location: rg.location,
- *     resourceGroupName: rg.name,
- *     sku: {
- *         name: "Dev(No SLA)_Standard_D11_v2",
- *         capacity: 1,
- *     },
- * });
- * const followedCluster = new azure.kusto.Cluster("followedCluster", {
- *     location: rg.location,
- *     resourceGroupName: rg.name,
- *     sku: {
- *         name: "Dev(No SLA)_Standard_D11_v2",
- *         capacity: 1,
- *     },
- * });
- * const followedDatabase = new azure.kusto.Database("followedDatabase", {
- *     resourceGroupName: rg.name,
- *     location: rg.location,
- *     clusterName: azurerm_kusto_cluster.cluster2.name,
- * });
- * const example = new azure.kusto.AttachedDatabaseConfiguration("example", {
- *     resourceGroupName: rg.name,
- *     location: rg.location,
- *     clusterName: followerCluster.name,
- *     clusterResourceId: followedCluster.id,
- *     databaseName: "*",
- *     defaultPrincipalModificationsKind: "None",
- * });
- * ```
- *
  * ## Import
  *
  * Kusto Attached Database Configurations can be imported using the `resource id`, e.g.

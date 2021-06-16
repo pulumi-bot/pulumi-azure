@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * > **Note:** If you want to change the data in the remote file without changing the `localFilePath`, then
  * taint the resource so the `azure.datalake.StoreFile` gets recreated with the new data.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleStore = new azure.datalake.Store("exampleStore", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     location: exampleResourceGroup.location,
- * });
- * const exampleStoreFile = new azure.datalake.StoreFile("exampleStoreFile", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     localFilePath: "/path/to/local/file",
- *     remoteFilePath: "/path/created/for/remote/file",
- * });
- * ```
- *
  * ## Import
  *
  * Data Lake Store File's can be imported using the `resource id`, e.g.

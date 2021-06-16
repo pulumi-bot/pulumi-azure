@@ -18,34 +18,6 @@ import (
 // > **Note:** The `compute.ScaleSet` resource has been superseded by the `compute.LinuxVirtualMachineScaleSet`](linux_virtual_machine_scale_set.html) and `compute.WindowsVirtualMachineScaleSet` resources. The existing `compute.ScaleSet` resource will continue to be available throughout the 2.x releases however is in a feature-frozen state to maintain compatibility - new functionality will instead be added to the `compute.LinuxVirtualMachineScaleSet` and `compute.WindowsVirtualMachineScaleSet` resources.
 //
 // ## Example Usage
-// ## Example of storageProfileImageReference with id
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v4/go/azure/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleImage, err := compute.NewImage(ctx, "exampleImage", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewScaleSet(ctx, "exampleScaleSet", &compute.ScaleSetArgs{
-// 			StorageProfileImageReference: &compute.ScaleSetStorageProfileImageReferenceArgs{
-// 				Id: exampleImage.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 //
 // ## Import
 //

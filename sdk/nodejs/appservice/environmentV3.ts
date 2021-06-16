@@ -10,56 +10,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** App Service Environment V3 is currently in Preview.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleVirtualNetwork = new azure.network.VirtualNetwork("exampleVirtualNetwork", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     addressSpaces: ["10.0.0.0/16"],
- * });
- * const inbound = new azure.network.Subnet("inbound", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     virtualNetworkName: exampleVirtualNetwork.name,
- *     addressPrefixes: ["10.0.1.0/24"],
- * });
- * const outbound = new azure.network.Subnet("outbound", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     virtualNetworkName: exampleVirtualNetwork.name,
- *     addressPrefixes: ["10.0.2.0/24"],
- *     serviceDelegation: [{
- *         name: "Microsoft.Web/hostingEnvironments",
- *         actions: ["Microsoft.Network/virtualNetworks/subnets/action"],
- *     }],
- * });
- * const exampleEnvironmentV3 = new azure.appservice.EnvironmentV3("exampleEnvironmentV3", {
- *     resourceGroupName: exampleResourceGroup.name,
- *     subnetId: outbound.id,
- *     clusterSettings: [
- *         {
- *             name: "DisableTls1.0",
- *             value: "1",
- *         },
- *         {
- *             name: "InternalEncryption",
- *             value: "true",
- *         },
- *         {
- *             name: "FrontEndSSLCipherSuiteOrder",
- *             value: "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256",
- *         },
- *     ],
- *     tags: {
- *         env: "production",
- *         terraformed: "true",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * A 3rd Generation (v3) App Service Environment can be imported using the `resource id`, e.g.

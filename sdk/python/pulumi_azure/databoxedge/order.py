@@ -261,35 +261,6 @@ class Order(pulumi.CustomResource):
         """
         Manages a Databox Edge Order.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_device = azure.databoxedge.Device("exampleDevice",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            sku_name="EdgeP_Base-Standard")
-        example_order = azure.databoxedge.Order("exampleOrder",
-            resource_group_name=example_resource_group.name,
-            device_name=example_device.name,
-            contact=azure.databoxedge.OrderContactArgs(
-                company_name="Contoso Corporation",
-                name="Bart",
-                email_lists=["bart@example.com"],
-                phone="(800) 867-5309",
-            ),
-            shipment_address=azure.databoxedge.OrderShipmentAddressArgs(
-                addresses=["740 Evergreen Terrace"],
-                city="Springfield",
-                country="United States",
-                postal_code="97403",
-                state="OR",
-            ))
-        ```
-
         ## Import
 
         Databox Edge Orders can be imported using the `resource id`, e.g.
@@ -313,35 +284,6 @@ class Order(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Databox Edge Order.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_device = azure.databoxedge.Device("exampleDevice",
-            resource_group_name=example_resource_group.name,
-            location=example_resource_group.location,
-            sku_name="EdgeP_Base-Standard")
-        example_order = azure.databoxedge.Order("exampleOrder",
-            resource_group_name=example_resource_group.name,
-            device_name=example_device.name,
-            contact=azure.databoxedge.OrderContactArgs(
-                company_name="Contoso Corporation",
-                name="Bart",
-                email_lists=["bart@example.com"],
-                phone="(800) 867-5309",
-            ),
-            shipment_address=azure.databoxedge.OrderShipmentAddressArgs(
-                addresses=["740 Evergreen Terrace"],
-                city="Springfield",
-                country="United States",
-                postal_code="97403",
-                state="OR",
-            ))
-        ```
 
         ## Import
 

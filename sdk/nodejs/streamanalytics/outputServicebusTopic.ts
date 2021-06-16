@@ -8,42 +8,6 @@ import * as utilities from "../utilities";
 /**
  * Manages a Stream Analytics Output to a ServiceBus Topic.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = azure.core.getResourceGroup({
- *     name: "example-resources",
- * });
- * const exampleJob = azure.streamanalytics.getJob({
- *     name: "example-job",
- *     resourceGroupName: azurerm_resource_group.example.name,
- * });
- * const exampleNamespace = new azure.servicebus.Namespace("exampleNamespace", {
- *     location: exampleResourceGroup.then(exampleResourceGroup => exampleResourceGroup.location),
- *     resourceGroupName: exampleResourceGroup.then(exampleResourceGroup => exampleResourceGroup.name),
- *     sku: "Standard",
- * });
- * const exampleTopic = new azure.servicebus.Topic("exampleTopic", {
- *     resourceGroupName: exampleResourceGroup.then(exampleResourceGroup => exampleResourceGroup.name),
- *     namespaceName: exampleNamespace.name,
- *     enablePartitioning: true,
- * });
- * const exampleOutputServicebusTopic = new azure.streamanalytics.OutputServicebusTopic("exampleOutputServicebusTopic", {
- *     streamAnalyticsJobName: exampleJob.then(exampleJob => exampleJob.name),
- *     resourceGroupName: exampleJob.then(exampleJob => exampleJob.resourceGroupName),
- *     topicName: exampleTopic.name,
- *     servicebusNamespace: exampleNamespace.name,
- *     sharedAccessPolicyKey: exampleNamespace.defaultPrimaryKey,
- *     sharedAccessPolicyName: "RootManageSharedAccessKey",
- *     serialization: {
- *         format: "Avro",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Stream Analytics Output ServiceBus Topic's can be imported using the `resource id`, e.g.

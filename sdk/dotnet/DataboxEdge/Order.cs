@@ -12,57 +12,6 @@ namespace Pulumi.Azure.DataboxEdge
     /// <summary>
     /// Manages a Databox Edge Order.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///         });
-    ///         var exampleDevice = new Azure.DataboxEdge.Device("exampleDevice", new Azure.DataboxEdge.DeviceArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             Location = exampleResourceGroup.Location,
-    ///             SkuName = "EdgeP_Base-Standard",
-    ///         });
-    ///         var exampleOrder = new Azure.DataboxEdge.Order("exampleOrder", new Azure.DataboxEdge.OrderArgs
-    ///         {
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             DeviceName = exampleDevice.Name,
-    ///             Contact = new Azure.DataboxEdge.Inputs.OrderContactArgs
-    ///             {
-    ///                 CompanyName = "Contoso Corporation",
-    ///                 Name = "Bart",
-    ///                 EmailLists = 
-    ///                 {
-    ///                     "bart@example.com",
-    ///                 },
-    ///                 Phone = "(800) 867-5309",
-    ///             },
-    ///             ShipmentAddress = new Azure.DataboxEdge.Inputs.OrderShipmentAddressArgs
-    ///             {
-    ///                 Addresses = 
-    ///                 {
-    ///                     "740 Evergreen Terrace",
-    ///                 },
-    ///                 City = "Springfield",
-    ///                 Country = "United States",
-    ///                 PostalCode = "97403",
-    ///                 State = "OR",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Databox Edge Orders can be imported using the `resource id`, e.g.

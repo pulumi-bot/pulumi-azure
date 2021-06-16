@@ -1128,19 +1128,6 @@ class ScaleSet(pulumi.CustomResource):
                 version="latest",
             ))
         ```
-        ## Example of storage_profile_image_reference with id
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_image = azure.compute.Image("exampleImage")
-        # ...
-        example_scale_set = azure.compute.ScaleSet("exampleScaleSet", storage_profile_image_reference=azure.compute.ScaleSetStorageProfileImageReferenceArgs(
-            id=example_image.id,
-        ))
-        # ...
-        ```
 
         ## Import
 
@@ -1369,19 +1356,6 @@ class ScaleSet(pulumi.CustomResource):
                 sku="16.04-LTS",
                 version="latest",
             ))
-        ```
-        ## Example of storage_profile_image_reference with id
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_image = azure.compute.Image("exampleImage")
-        # ...
-        example_scale_set = azure.compute.ScaleSet("exampleScaleSet", storage_profile_image_reference=azure.compute.ScaleSetStorageProfileImageReferenceArgs(
-            id=example_image.id,
-        ))
-        # ...
         ```
 
         ## Import

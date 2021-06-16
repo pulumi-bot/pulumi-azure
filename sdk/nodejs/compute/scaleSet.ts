@@ -204,19 +204,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example of storageProfileImageReference with id
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleImage = new azure.compute.Image("exampleImage", {});
- * // ...
- * const exampleScaleSet = new azure.compute.ScaleSet("exampleScaleSet", {storageProfileImageReference: {
- *     id: exampleImage.id,
- * }});
- * // ...
- * ```
  *
  * ## Import
  *

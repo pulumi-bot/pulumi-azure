@@ -11,21 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** Azure is planning to deprecate the `singlePlacementGroup` attribute in the Orchestrated Virtual Machine Scale Set starting from api-version `2019-12-01` and there will be a breaking change in the Orchestrated Virtual Machine Scale Set.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
- *
- * const exampleResourceGroup = new azure.core.ResourceGroup("exampleResourceGroup", {location: "West Europe"});
- * const exampleOrchestratedVirtualMachineScaleSet = new azure.compute.OrchestratedVirtualMachineScaleSet("exampleOrchestratedVirtualMachineScaleSet", {
- *     location: exampleResourceGroup.location,
- *     resourceGroupName: exampleResourceGroup.name,
- *     platformFaultDomainCount: 1,
- *     zones: ["1"],
- * });
- * ```
- *
  * ## Import
  *
  * An Orchestrated Virtual Machine Scale Set can be imported using the `resource id`, e.g.

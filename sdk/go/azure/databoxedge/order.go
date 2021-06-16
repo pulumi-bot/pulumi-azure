@@ -13,62 +13,6 @@ import (
 
 // Manages a Databox Edge Order.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v4/go/azure/core"
-// 	"github.com/pulumi/pulumi-azure/sdk/v4/go/azure/databoxedge"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleResourceGroup, err := core.NewResourceGroup(ctx, "exampleResourceGroup", &core.ResourceGroupArgs{
-// 			Location: pulumi.String("West Europe"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleDevice, err := databoxedge.NewDevice(ctx, "exampleDevice", &databoxedge.DeviceArgs{
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 			Location:          exampleResourceGroup.Location,
-// 			SkuName:           pulumi.String("EdgeP_Base-Standard"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databoxedge.NewOrder(ctx, "exampleOrder", &databoxedge.OrderArgs{
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 			DeviceName:        exampleDevice.Name,
-// 			Contact: &databoxedge.OrderContactArgs{
-// 				CompanyName: pulumi.String("Contoso Corporation"),
-// 				Name:        pulumi.String("Bart"),
-// 				EmailLists: pulumi.StringArray{
-// 					pulumi.String("bart@example.com"),
-// 				},
-// 				Phone: pulumi.String("(800) 867-5309"),
-// 			},
-// 			ShipmentAddress: &databoxedge.OrderShipmentAddressArgs{
-// 				Addresses: pulumi.StringArray{
-// 					pulumi.String("740 Evergreen Terrace"),
-// 				},
-// 				City:       pulumi.String("Springfield"),
-// 				Country:    pulumi.String("United States"),
-// 				PostalCode: pulumi.String("97403"),
-// 				State:      pulumi.String("OR"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // Databox Edge Orders can be imported using the `resource id`, e.g.

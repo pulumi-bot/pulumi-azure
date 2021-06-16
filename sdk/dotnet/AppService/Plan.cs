@@ -270,7 +270,7 @@ namespace Pulumi.Azure.AppService
         /// The kind of the App Service Plan to create. Possible values are `Windows` (also available as `App`), `Linux`, `elastic` (for Premium Consumption) and `FunctionApp` (for a Consumption Plan). Defaults to `Windows`. Changing this forces a new resource to be created.
         /// </summary>
         [Input("kind")]
-        public Input<string>? Kind { get; set; }
+        public string? Kind { get; set; }
 
         /// <summary>
         /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
@@ -346,7 +346,7 @@ namespace Pulumi.Azure.AppService
         /// The kind of the App Service Plan to create. Possible values are `Windows` (also available as `App`), `Linux`, `elastic` (for Premium Consumption) and `FunctionApp` (for a Consumption Plan). Defaults to `Windows`. Changing this forces a new resource to be created.
         /// </summary>
         [Input("kind")]
-        public Input<string>? Kind { get; set; }
+        public string? Kind { get; set; }
 
         /// <summary>
         /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.

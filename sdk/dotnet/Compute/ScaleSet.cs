@@ -313,32 +313,6 @@ namespace Pulumi.Azure.Compute
     /// 
     /// }
     /// ```
-    /// ## Example of storage_profile_image_reference with id
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleImage = new Azure.Compute.Image("exampleImage", new Azure.Compute.ImageArgs
-    ///         {
-    ///         });
-    ///         // ...
-    ///         var exampleScaleSet = new Azure.Compute.ScaleSet("exampleScaleSet", new Azure.Compute.ScaleSetArgs
-    ///         {
-    ///             StorageProfileImageReference = new Azure.Compute.Inputs.ScaleSetStorageProfileImageReferenceArgs
-    ///             {
-    ///                 Id = exampleImage.Id,
-    ///             },
-    ///         });
-    ///         // ...
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// 
     /// ## Import
     /// 

@@ -317,20 +317,6 @@ class OrchestratedVirtualMachineScaleSet(pulumi.CustomResource):
 
         > **Note:** Azure is planning to deprecate the `single_placement_group` attribute in the Orchestrated Virtual Machine Scale Set starting from api-version `2019-12-01` and there will be a breaking change in the Orchestrated Virtual Machine Scale Set.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_orchestrated_virtual_machine_scale_set = azure.compute.OrchestratedVirtualMachineScaleSet("exampleOrchestratedVirtualMachineScaleSet",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            platform_fault_domain_count=1,
-            zones=["1"])
-        ```
-
         ## Import
 
         An Orchestrated Virtual Machine Scale Set can be imported using the `resource id`, e.g.
@@ -362,20 +348,6 @@ class OrchestratedVirtualMachineScaleSet(pulumi.CustomResource):
         > **Note:** Orchestrated Virtual Machine Scale Sets are in Public Preview and it may receive breaking changes - [more details can be found in the Azure Documentation](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/orchestration-modes).
 
         > **Note:** Azure is planning to deprecate the `single_placement_group` attribute in the Orchestrated Virtual Machine Scale Set starting from api-version `2019-12-01` and there will be a breaking change in the Orchestrated Virtual Machine Scale Set.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example_resource_group = azure.core.ResourceGroup("exampleResourceGroup", location="West Europe")
-        example_orchestrated_virtual_machine_scale_set = azure.compute.OrchestratedVirtualMachineScaleSet("exampleOrchestratedVirtualMachineScaleSet",
-            location=example_resource_group.location,
-            resource_group_name=example_resource_group.name,
-            platform_fault_domain_count=1,
-            zones=["1"])
-        ```
 
         ## Import
 

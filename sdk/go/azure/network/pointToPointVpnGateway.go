@@ -13,33 +13,6 @@ import (
 
 // Manages a Point-to-Site VPN Gateway.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v4/go/azure/network"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := network.NewPointToPointVpnGateway(ctx, "example", &network.PointToPointVpnGatewayArgs{
-// 			Location:                 pulumi.Any(azurerm_resource_group.Example.Location),
-// 			ResourceGroupName:        pulumi.Any(azurerm_resource_group.Example.Resource_group_name),
-// 			VirtualHubId:             pulumi.Any(azurerm_virtual_hub.Example.Id),
-// 			VpnServerConfigurationId: pulumi.Any(azurerm_vpn_server_configuration.Example.Id),
-// 			ScaleUnit:                pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // Point-to-Site VPN Gateway's can be imported using the `resource id`, e.g.

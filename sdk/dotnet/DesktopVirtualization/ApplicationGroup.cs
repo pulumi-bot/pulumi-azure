@@ -12,57 +12,6 @@ namespace Pulumi.Azure.DesktopVirtualization
     /// <summary>
     /// Manages a Virtual Desktop Application Group.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new Azure.Core.ResourceGroup("example", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///         });
-    ///         var pooledbreadthfirst = new Azure.DesktopVirtualization.HostPool("pooledbreadthfirst", new Azure.DesktopVirtualization.HostPoolArgs
-    ///         {
-    ///             Location = example.Location,
-    ///             ResourceGroupName = example.Name,
-    ///             Type = "Pooled",
-    ///             LoadBalancerType = "BreadthFirst",
-    ///         });
-    ///         var personalautomatic = new Azure.DesktopVirtualization.HostPool("personalautomatic", new Azure.DesktopVirtualization.HostPoolArgs
-    ///         {
-    ///             Location = example.Location,
-    ///             ResourceGroupName = example.Name,
-    ///             Type = "Personal",
-    ///             PersonalDesktopAssignmentType = "Automatic",
-    ///         });
-    ///         var remoteapp = new Azure.DesktopVirtualization.ApplicationGroup("remoteapp", new Azure.DesktopVirtualization.ApplicationGroupArgs
-    ///         {
-    ///             Location = example.Location,
-    ///             ResourceGroupName = example.Name,
-    ///             Type = "RemoteApp",
-    ///             HostPoolId = pooledbreadthfirst.Id,
-    ///             FriendlyName = "TestAppGroup",
-    ///             Description = "Acceptance Test: An application group",
-    ///         });
-    ///         var desktopapp = new Azure.DesktopVirtualization.ApplicationGroup("desktopapp", new Azure.DesktopVirtualization.ApplicationGroupArgs
-    ///         {
-    ///             Location = example.Location,
-    ///             ResourceGroupName = example.Name,
-    ///             Type = "Desktop",
-    ///             HostPoolId = personalautomatic.Id,
-    ///             FriendlyName = "TestAppGroup",
-    ///             Description = "Acceptance Test: An application group",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Virtual Desktop Application Groups can be imported using the `resource id`, e.g.

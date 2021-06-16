@@ -16,35 +16,6 @@ namespace Pulumi.Azure.Compute
     /// 
     /// &gt; **Note:** Azure is planning to deprecate the `single_placement_group` attribute in the Orchestrated Virtual Machine Scale Set starting from api-version `2019-12-01` and there will be a breaking change in the Orchestrated Virtual Machine Scale Set.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleResourceGroup = new Azure.Core.ResourceGroup("exampleResourceGroup", new Azure.Core.ResourceGroupArgs
-    ///         {
-    ///             Location = "West Europe",
-    ///         });
-    ///         var exampleOrchestratedVirtualMachineScaleSet = new Azure.Compute.OrchestratedVirtualMachineScaleSet("exampleOrchestratedVirtualMachineScaleSet", new Azure.Compute.OrchestratedVirtualMachineScaleSetArgs
-    ///         {
-    ///             Location = exampleResourceGroup.Location,
-    ///             ResourceGroupName = exampleResourceGroup.Name,
-    ///             PlatformFaultDomainCount = 1,
-    ///             Zones = 
-    ///             {
-    ///                 "1",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// An Orchestrated Virtual Machine Scale Set can be imported using the `resource id`, e.g.

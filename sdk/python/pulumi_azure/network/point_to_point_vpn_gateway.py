@@ -329,20 +329,6 @@ class PointToPointVpnGateway(pulumi.CustomResource):
         """
         Manages a Point-to-Site VPN Gateway.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example = azure.network.PointToPointVpnGateway("example",
-            location=azurerm_resource_group["example"]["location"],
-            resource_group_name=azurerm_resource_group["example"]["resource_group_name"],
-            virtual_hub_id=azurerm_virtual_hub["example"]["id"],
-            vpn_server_configuration_id=azurerm_vpn_server_configuration["example"]["id"],
-            scale_unit=1)
-        ```
-
         ## Import
 
         Point-to-Site VPN Gateway's can be imported using the `resource id`, e.g.
@@ -371,20 +357,6 @@ class PointToPointVpnGateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Point-to-Site VPN Gateway.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-
-        example = azure.network.PointToPointVpnGateway("example",
-            location=azurerm_resource_group["example"]["location"],
-            resource_group_name=azurerm_resource_group["example"]["resource_group_name"],
-            virtual_hub_id=azurerm_virtual_hub["example"]["id"],
-            vpn_server_configuration_id=azurerm_vpn_server_configuration["example"]["id"],
-            scale_unit=1)
-        ```
 
         ## Import
 

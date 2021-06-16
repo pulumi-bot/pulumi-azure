@@ -13,14 +13,14 @@ namespace Pulumi.Azure.Outputs
     [OutputType]
     public sealed class ProviderFeaturesKeyVault
     {
-        public readonly bool? PurgeSoftDeleteOnDestroy;
-        public readonly bool? RecoverSoftDeletedKeyVaults;
+        public readonly Input<bool>? PurgeSoftDeleteOnDestroy;
+        public readonly Input<bool>? RecoverSoftDeletedKeyVaults;
 
         [OutputConstructor]
         private ProviderFeaturesKeyVault(
-            bool? purgeSoftDeleteOnDestroy,
+            Input<bool>? purgeSoftDeleteOnDestroy,
 
-            bool? recoverSoftDeletedKeyVaults)
+            Input<bool>? recoverSoftDeletedKeyVaults)
         {
             PurgeSoftDeleteOnDestroy = purgeSoftDeleteOnDestroy;
             RecoverSoftDeletedKeyVaults = recoverSoftDeletedKeyVaults;
