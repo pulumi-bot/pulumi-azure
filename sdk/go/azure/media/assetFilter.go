@@ -76,7 +76,7 @@ import (
 // 			},
 // 			TrackSelections: media.AssetFilterTrackSelectionArray{
 // 				&media.AssetFilterTrackSelectionArgs{
-// 					Conditions: media.AssetFilterTrackSelectionConditionArray{
+// 					Conditions: []media.AssetFilterTrackSelectionConditionArgs{
 // 						&media.AssetFilterTrackSelectionConditionArgs{
 // 							Property:  pulumi.String("Type"),
 // 							Operation: pulumi.String("Equal"),
@@ -95,7 +95,7 @@ import (
 // 					},
 // 				},
 // 				&media.AssetFilterTrackSelectionArgs{
-// 					Conditions: media.AssetFilterTrackSelectionConditionArray{
+// 					Conditions: []media.AssetFilterTrackSelectionConditionArgs{
 // 						&media.AssetFilterTrackSelectionConditionArgs{
 // 							Property:  pulumi.String("Type"),
 // 							Operation: pulumi.String("Equal"),

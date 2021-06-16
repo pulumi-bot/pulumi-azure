@@ -13,10 +13,10 @@ namespace Pulumi.Azure.Outputs
     [OutputType]
     public sealed class ProviderFeaturesLogAnalyticsWorkspace
     {
-        public readonly bool PermanentlyDeleteOnDestroy;
+        public readonly Input<bool> PermanentlyDeleteOnDestroy;
 
         [OutputConstructor]
-        private ProviderFeaturesLogAnalyticsWorkspace(bool permanentlyDeleteOnDestroy)
+        private ProviderFeaturesLogAnalyticsWorkspace(Input<bool> permanentlyDeleteOnDestroy)
         {
             PermanentlyDeleteOnDestroy = permanentlyDeleteOnDestroy;
         }
