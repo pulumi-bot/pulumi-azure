@@ -19,77 +19,6 @@ namespace Pulumi.Azure
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
-        /// The password associated with the Client Certificate. For use when authenticating as a Service Principal using a Client
-        /// Certificate
-        /// </summary>
-        [Output("clientCertificatePassword")]
-        public Output<string?> ClientCertificatePassword { get; private set; } = null!;
-
-        /// <summary>
-        /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-        /// Principal using a Client Certificate.
-        /// </summary>
-        [Output("clientCertificatePath")]
-        public Output<string?> ClientCertificatePath { get; private set; } = null!;
-
-        /// <summary>
-        /// The Client ID which should be used.
-        /// </summary>
-        [Output("clientId")]
-        public Output<string?> ClientId { get; private set; } = null!;
-
-        /// <summary>
-        /// The Client Secret which should be used. For use When authenticating as a Service Principal using a Client Secret.
-        /// </summary>
-        [Output("clientSecret")]
-        public Output<string?> ClientSecret { get; private set; } = null!;
-
-        /// <summary>
-        /// The Cloud Environment which should be used. Possible values are public, usgovernment, german, and china. Defaults to
-        /// public.
-        /// </summary>
-        [Output("environment")]
-        public Output<string?> Environment { get; private set; } = null!;
-
-        /// <summary>
-        /// The Hostname which should be used for the Azure Metadata Service.
-        /// </summary>
-        [Output("metadataHost")]
-        public Output<string?> MetadataHost { get; private set; } = null!;
-
-        /// <summary>
-        /// Deprecated - replaced by `metadata_host`.
-        /// </summary>
-        [Output("metadataUrl")]
-        public Output<string?> MetadataUrl { get; private set; } = null!;
-
-        /// <summary>
-        /// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
-        /// automatically.
-        /// </summary>
-        [Output("msiEndpoint")]
-        public Output<string?> MsiEndpoint { get; private set; } = null!;
-
-        /// <summary>
-        /// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
-        /// </summary>
-        [Output("partnerId")]
-        public Output<string?> PartnerId { get; private set; } = null!;
-
-        /// <summary>
-        /// The Subscription ID which should be used.
-        /// </summary>
-        [Output("subscriptionId")]
-        public Output<string?> SubscriptionId { get; private set; } = null!;
-
-        /// <summary>
-        /// The Tenant ID which should be used.
-        /// </summary>
-        [Output("tenantId")]
-        public Output<string?> TenantId { get; private set; } = null!;
-
-
-        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -128,26 +57,26 @@ namespace Pulumi.Azure
         /// The password associated with the Client Certificate. For use when authenticating as a Service Principal using a Client
         /// Certificate
         /// </summary>
-        [Input("clientCertificatePassword")]
+        [Input("clientCertificatePassword", json: true)]
         public Input<string>? ClientCertificatePassword { get; set; }
 
         /// <summary>
         /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
         /// Principal using a Client Certificate.
         /// </summary>
-        [Input("clientCertificatePath")]
+        [Input("clientCertificatePath", json: true)]
         public Input<string>? ClientCertificatePath { get; set; }
 
         /// <summary>
         /// The Client ID which should be used.
         /// </summary>
-        [Input("clientId")]
+        [Input("clientId", json: true)]
         public Input<string>? ClientId { get; set; }
 
         /// <summary>
         /// The Client Secret which should be used. For use When authenticating as a Service Principal using a Client Secret.
         /// </summary>
-        [Input("clientSecret")]
+        [Input("clientSecret", json: true)]
         public Input<string>? ClientSecret { get; set; }
 
         /// <summary>
@@ -166,7 +95,7 @@ namespace Pulumi.Azure
         /// The Cloud Environment which should be used. Possible values are public, usgovernment, german, and china. Defaults to
         /// public.
         /// </summary>
-        [Input("environment")]
+        [Input("environment", json: true)]
         public Input<string>? Environment { get; set; }
 
         [Input("features", json: true)]
@@ -175,26 +104,26 @@ namespace Pulumi.Azure
         /// <summary>
         /// The Hostname which should be used for the Azure Metadata Service.
         /// </summary>
-        [Input("metadataHost")]
+        [Input("metadataHost", json: true)]
         public Input<string>? MetadataHost { get; set; }
 
         /// <summary>
         /// Deprecated - replaced by `metadata_host`.
         /// </summary>
-        [Input("metadataUrl")]
+        [Input("metadataUrl", json: true)]
         public Input<string>? MetadataUrl { get; set; }
 
         /// <summary>
         /// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
         /// automatically.
         /// </summary>
-        [Input("msiEndpoint")]
+        [Input("msiEndpoint", json: true)]
         public Input<string>? MsiEndpoint { get; set; }
 
         /// <summary>
         /// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
         /// </summary>
-        [Input("partnerId")]
+        [Input("partnerId", json: true)]
         public Input<string>? PartnerId { get; set; }
 
         /// <summary>
@@ -219,13 +148,13 @@ namespace Pulumi.Azure
         /// <summary>
         /// The Subscription ID which should be used.
         /// </summary>
-        [Input("subscriptionId")]
+        [Input("subscriptionId", json: true)]
         public Input<string>? SubscriptionId { get; set; }
 
         /// <summary>
         /// The Tenant ID which should be used.
         /// </summary>
-        [Input("tenantId")]
+        [Input("tenantId", json: true)]
         public Input<string>? TenantId { get; set; }
 
         /// <summary>
