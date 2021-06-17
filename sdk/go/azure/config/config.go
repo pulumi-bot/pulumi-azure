@@ -35,13 +35,13 @@ func GetClientSecret(ctx *pulumi.Context) string {
 }
 
 // This will disable the x-ms-correlation-request-id header.
-func GetDisableCorrelationRequestId(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "azure:disableCorrelationRequestId")
+func GetDisableCorrelationRequestId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "azure:disableCorrelationRequestId")
 }
 
 // This will disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
-func GetDisableTerraformPartnerId(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "azure:disableTerraformPartnerId")
+func GetDisableTerraformPartnerId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "azure:disableTerraformPartnerId")
 }
 
 // The Cloud Environment which should be used. Possible values are public, usgovernment, german, and china. Defaults to
@@ -98,27 +98,27 @@ func GetPartnerId(ctx *pulumi.Context) string {
 // [DEPRECATED] This will cause the AzureRM Provider to skip verifying the credentials being used are valid.
 //
 // Deprecated: This field is deprecated and will be removed in version 3.0 of the Azure Provider
-func GetSkipCredentialsValidation(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "azure:skipCredentialsValidation")
+func GetSkipCredentialsValidation(ctx *pulumi.Context) string {
+	return config.Get(ctx, "azure:skipCredentialsValidation")
 }
 
 // Should the AzureRM Provider skip registering all of the Resource Providers that it supports, if they're not already
 // registered?
-func GetSkipProviderRegistration(ctx *pulumi.Context) bool {
-	v, err := config.TryBool(ctx, "azure:skipProviderRegistration")
+func GetSkipProviderRegistration(ctx *pulumi.Context) string {
+	v, err := config.Try(ctx, "azure:skipProviderRegistration")
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(false, parseEnvBool, "ARM_SKIP_PROVIDER_REGISTRATION").(bool)
+	return getEnvOrDefault(false, nil, "ARM_SKIP_PROVIDER_REGISTRATION").(string)
 }
 
 // Should the AzureRM Provider use AzureAD to access the Storage Data Plane API's?
-func GetStorageUseAzuread(ctx *pulumi.Context) bool {
-	v, err := config.TryBool(ctx, "azure:storageUseAzuread")
+func GetStorageUseAzuread(ctx *pulumi.Context) string {
+	v, err := config.Try(ctx, "azure:storageUseAzuread")
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(false, parseEnvBool, "ARM_STORAGE_USE_AZUREAD").(bool)
+	return getEnvOrDefault(false, nil, "ARM_STORAGE_USE_AZUREAD").(string)
 }
 
 // The Subscription ID which should be used.
@@ -136,6 +136,6 @@ func GetTenantId(ctx *pulumi.Context) string {
 }
 
 // Allowed Managed Service Identity be used for Authentication.
-func GetUseMsi(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "azure:useMsi")
+func GetUseMsi(ctx *pulumi.Context) string {
+	return config.Get(ctx, "azure:useMsi")
 }

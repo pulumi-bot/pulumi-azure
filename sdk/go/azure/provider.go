@@ -64,10 +64,10 @@ func NewProvider(ctx *pulumi.Context,
 		args.MetadataUrl = pulumi.StringPtr(getEnvOrDefault("", nil, "ARM_METADATA_URL").(string))
 	}
 	if args.SkipProviderRegistration == nil {
-		args.SkipProviderRegistration = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "ARM_SKIP_PROVIDER_REGISTRATION").(bool))
+		args.SkipProviderRegistration = pulumi.BoolPtr(getEnvOrDefault(false, nil, "ARM_SKIP_PROVIDER_REGISTRATION").(string))
 	}
 	if args.StorageUseAzuread == nil {
-		args.StorageUseAzuread = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "ARM_STORAGE_USE_AZUREAD").(bool))
+		args.StorageUseAzuread = pulumi.BoolPtr(getEnvOrDefault(false, nil, "ARM_STORAGE_USE_AZUREAD").(string))
 	}
 	if args.SubscriptionId == nil {
 		args.SubscriptionId = pulumi.StringPtr(getEnvOrDefault("", nil, "ARM_SUBSCRIPTION_ID").(string))

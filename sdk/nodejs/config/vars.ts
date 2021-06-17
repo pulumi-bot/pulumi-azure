@@ -40,7 +40,7 @@ export let disableTerraformPartnerId: boolean | undefined = __config.getObject<b
  */
 export let environment: string | undefined = __config.get("environment") || (utilities.getEnv("AZURE_ENVIRONMENT", "ARM_ENVIRONMENT") || "public");
 export let features: outputs.config.Features | undefined = __config.getObject<outputs.config.Features>("features");
-export let location: string | undefined = __config.get("location") || utilities.getEnv("ARM_LOCATION");
+export let location: string | undefined = __config.get("location") || <any>utilities.getEnv("ARM_LOCATION");
 /**
  * The Hostname which should be used for the Azure Metadata Service.
  */
@@ -48,7 +48,7 @@ export let metadataHost: string | undefined = __config.get("metadataHost") || ut
 /**
  * Deprecated - replaced by `metadata_host`.
  */
-export let metadataUrl: string | undefined = __config.get("metadataUrl") || utilities.getEnv("ARM_METADATA_URL");
+export let metadataUrl: string | undefined = __config.get("metadataUrl") || <any>utilities.getEnv("ARM_METADATA_URL");
 /**
  * The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
  * automatically.
@@ -66,15 +66,15 @@ export let skipCredentialsValidation: boolean | undefined = __config.getObject<b
  * Should the AzureRM Provider skip registering all of the Resource Providers that it supports, if they're not already
  * registered?
  */
-export let skipProviderRegistration: boolean | undefined = __config.getObject<boolean>("skipProviderRegistration") || (<any>utilities.getEnvBoolean("ARM_SKIP_PROVIDER_REGISTRATION") || false);
+export let skipProviderRegistration: boolean | undefined = __config.getObject<boolean>("skipProviderRegistration") || (<any>utilities.getEnv("ARM_SKIP_PROVIDER_REGISTRATION") || false);
 /**
  * Should the AzureRM Provider use AzureAD to access the Storage Data Plane API's?
  */
-export let storageUseAzuread: boolean | undefined = __config.getObject<boolean>("storageUseAzuread") || (<any>utilities.getEnvBoolean("ARM_STORAGE_USE_AZUREAD") || false);
+export let storageUseAzuread: boolean | undefined = __config.getObject<boolean>("storageUseAzuread") || (<any>utilities.getEnv("ARM_STORAGE_USE_AZUREAD") || false);
 /**
  * The Subscription ID which should be used.
  */
-export let subscriptionId: string | undefined = __config.get("subscriptionId") || (utilities.getEnv("ARM_SUBSCRIPTION_ID") || "");
+export let subscriptionId: string | undefined = __config.get("subscriptionId") || (<any>utilities.getEnv("ARM_SUBSCRIPTION_ID") || "");
 /**
  * The Tenant ID which should be used.
  */

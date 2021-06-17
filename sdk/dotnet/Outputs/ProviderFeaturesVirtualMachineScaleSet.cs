@@ -13,14 +13,14 @@ namespace Pulumi.Azure.Outputs
     [OutputType]
     public sealed class ProviderFeaturesVirtualMachineScaleSet
     {
-        public readonly bool? ForceDelete;
-        public readonly bool RollInstancesWhenRequired;
+        public readonly Input<bool>? ForceDelete;
+        public readonly Input<bool> RollInstancesWhenRequired;
 
         [OutputConstructor]
         private ProviderFeaturesVirtualMachineScaleSet(
-            bool? forceDelete,
+            Input<bool>? forceDelete,
 
-            bool rollInstancesWhenRequired)
+            Input<bool> rollInstancesWhenRequired)
         {
             ForceDelete = forceDelete;
             RollInstancesWhenRequired = rollInstancesWhenRequired;

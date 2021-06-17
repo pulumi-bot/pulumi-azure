@@ -99,11 +99,11 @@ class ProviderArgs:
         if skip_credentials_validation is not None:
             pulumi.set(__self__, "skip_credentials_validation", skip_credentials_validation)
         if skip_provider_registration is None:
-            skip_provider_registration = (_utilities.get_env_bool('ARM_SKIP_PROVIDER_REGISTRATION') or False)
+            skip_provider_registration = (_utilities.get_env('ARM_SKIP_PROVIDER_REGISTRATION') or False)
         if skip_provider_registration is not None:
             pulumi.set(__self__, "skip_provider_registration", skip_provider_registration)
         if storage_use_azuread is None:
-            storage_use_azuread = (_utilities.get_env_bool('ARM_STORAGE_USE_AZUREAD') or False)
+            storage_use_azuread = (_utilities.get_env('ARM_STORAGE_USE_AZUREAD') or False)
         if storage_use_azuread is not None:
             pulumi.set(__self__, "storage_use_azuread", storage_use_azuread)
         if subscription_id is None:
@@ -484,10 +484,10 @@ class Provider(pulumi.ProviderResource):
                 pulumi.log.warn("""skip_credentials_validation is deprecated: This field is deprecated and will be removed in version 3.0 of the Azure Provider""")
             __props__.__dict__["skip_credentials_validation"] = pulumi.Output.from_input(skip_credentials_validation).apply(pulumi.runtime.to_json) if skip_credentials_validation is not None else None
             if skip_provider_registration is None:
-                skip_provider_registration = (_utilities.get_env_bool('ARM_SKIP_PROVIDER_REGISTRATION') or False)
+                skip_provider_registration = (_utilities.get_env('ARM_SKIP_PROVIDER_REGISTRATION') or False)
             __props__.__dict__["skip_provider_registration"] = pulumi.Output.from_input(skip_provider_registration).apply(pulumi.runtime.to_json) if skip_provider_registration is not None else None
             if storage_use_azuread is None:
-                storage_use_azuread = (_utilities.get_env_bool('ARM_STORAGE_USE_AZUREAD') or False)
+                storage_use_azuread = (_utilities.get_env('ARM_STORAGE_USE_AZUREAD') or False)
             __props__.__dict__["storage_use_azuread"] = pulumi.Output.from_input(storage_use_azuread).apply(pulumi.runtime.to_json) if storage_use_azuread is not None else None
             if subscription_id is None:
                 subscription_id = (_utilities.get_env('ARM_SUBSCRIPTION_ID') or '')
