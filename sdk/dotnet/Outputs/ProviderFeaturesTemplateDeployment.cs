@@ -13,10 +13,10 @@ namespace Pulumi.Azure.Outputs
     [OutputType]
     public sealed class ProviderFeaturesTemplateDeployment
     {
-        public readonly bool DeleteNestedItemsDuringDeletion;
+        public readonly Input<bool> DeleteNestedItemsDuringDeletion;
 
         [OutputConstructor]
-        private ProviderFeaturesTemplateDeployment(bool deleteNestedItemsDuringDeletion)
+        private ProviderFeaturesTemplateDeployment(Input<bool> deleteNestedItemsDuringDeletion)
         {
             DeleteNestedItemsDuringDeletion = deleteNestedItemsDuringDeletion;
         }
