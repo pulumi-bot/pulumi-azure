@@ -40,9 +40,9 @@ import (
 // 					Name:     pulumi.String("Rule1"),
 // 					Priority: pulumi.Int(1),
 // 					RuleType: pulumi.String("MatchRule"),
-// 					MatchConditions: waf.PolicyCustomRuleMatchConditionArray{
+// 					MatchConditions: []waf.PolicyCustomRuleMatchConditionArgs{
 // 						&waf.PolicyCustomRuleMatchConditionArgs{
-// 							MatchVariables: waf.PolicyCustomRuleMatchConditionMatchVariableArray{
+// 							MatchVariables: []waf.PolicyCustomRuleMatchConditionMatchVariableArgs{
 // 								&waf.PolicyCustomRuleMatchConditionMatchVariableArgs{
 // 									VariableName: pulumi.String("RemoteAddr"),
 // 								},
@@ -61,9 +61,9 @@ import (
 // 					Name:     pulumi.String("Rule2"),
 // 					Priority: pulumi.Int(2),
 // 					RuleType: pulumi.String("MatchRule"),
-// 					MatchConditions: waf.PolicyCustomRuleMatchConditionArray{
+// 					MatchConditions: []waf.PolicyCustomRuleMatchConditionArgs{
 // 						&waf.PolicyCustomRuleMatchConditionArgs{
-// 							MatchVariables: waf.PolicyCustomRuleMatchConditionMatchVariableArray{
+// 							MatchVariables: []waf.PolicyCustomRuleMatchConditionMatchVariableArgs{
 // 								&waf.PolicyCustomRuleMatchConditionMatchVariableArgs{
 // 									VariableName: pulumi.String("RemoteAddr"),
 // 								},
@@ -75,7 +75,7 @@ import (
 // 							},
 // 						},
 // 						&waf.PolicyCustomRuleMatchConditionArgs{
-// 							MatchVariables: waf.PolicyCustomRuleMatchConditionMatchVariableArray{
+// 							MatchVariables: []waf.PolicyCustomRuleMatchConditionMatchVariableArgs{
 // 								&waf.PolicyCustomRuleMatchConditionMatchVariableArgs{
 // 									VariableName: pulumi.String("RequestHeaders"),
 // 									Selector:     pulumi.String("UserAgent"),
