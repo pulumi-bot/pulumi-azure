@@ -47,10 +47,10 @@ import (
 // 					Name:     pulumi.String("app_rule_collection1"),
 // 					Priority: pulumi.Int(500),
 // 					Action:   pulumi.String("Deny"),
-// 					Rules: network.FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleArray{
+// 					Rules: []network.FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleArgs{
 // 						&network.FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleArgs{
 // 							Name: pulumi.String("app_rule_collection1_rule1"),
-// 							Protocols: network.FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocolArray{
+// 							Protocols: []network.FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocolArgs{
 // 								&network.FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRuleProtocolArgs{
 // 									Type: pulumi.String("Http"),
 // 									Port: pulumi.Int(80),
@@ -75,7 +75,7 @@ import (
 // 					Name:     pulumi.String("network_rule_collection1"),
 // 					Priority: pulumi.Int(400),
 // 					Action:   pulumi.String("Deny"),
-// 					Rules: network.FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRuleArray{
+// 					Rules: []network.FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRuleArgs{
 // 						&network.FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRuleArgs{
 // 							Name: pulumi.String("network_rule_collection1_rule1"),
 // 							Protocols: pulumi.StringArray{
@@ -102,7 +102,7 @@ import (
 // 					Name:     pulumi.String("nat_rule_collection1"),
 // 					Priority: pulumi.Int(300),
 // 					Action:   pulumi.String("Dnat"),
-// 					Rules: network.FirewallPolicyRuleCollectionGroupNatRuleCollectionRuleArray{
+// 					Rules: []network.FirewallPolicyRuleCollectionGroupNatRuleCollectionRuleArgs{
 // 						&network.FirewallPolicyRuleCollectionGroupNatRuleCollectionRuleArgs{
 // 							Name: pulumi.String("nat_rule_collection1_rule1"),
 // 							Protocols: pulumi.StringArray{
