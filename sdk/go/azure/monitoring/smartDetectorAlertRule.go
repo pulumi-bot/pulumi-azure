@@ -13,63 +13,6 @@ import (
 
 // Manages an Monitor Smart Detector Alert Rule.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-azure/sdk/v4/go/azure/appinsights"
-// 	"github.com/pulumi/pulumi-azure/sdk/v4/go/azure/core"
-// 	"github.com/pulumi/pulumi-azure/sdk/v4/go/azure/monitoring"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleResourceGroup, err := core.NewResourceGroup(ctx, "exampleResourceGroup", &core.ResourceGroupArgs{
-// 			Location: pulumi.String("West Europe"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleInsights, err := appinsights.NewInsights(ctx, "exampleInsights", &appinsights.InsightsArgs{
-// 			Location:          exampleResourceGroup.Location,
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 			ApplicationType:   pulumi.String("web"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = monitoring.NewActionGroup(ctx, "exampleActionGroup", &monitoring.ActionGroupArgs{
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 			ShortName:         pulumi.String("exampleactiongroup"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = monitoring.NewSmartDetectorAlertRule(ctx, "exampleSmartDetectorAlertRule", &monitoring.SmartDetectorAlertRuleArgs{
-// 			ResourceGroupName: exampleResourceGroup.Name,
-// 			Severity:          pulumi.String("Sev0"),
-// 			ScopeResourceIds: pulumi.StringArray{
-// 				exampleInsights.ID(),
-// 			},
-// 			Frequency:    pulumi.String("PT1M"),
-// 			DetectorType: pulumi.String("FailureAnomaliesDetector"),
-// 			ActionGroup: &monitoring.SmartDetectorAlertRuleActionGroupArgs{
-// 				Ids: pulumi.StringArray{
-// 					pulumi.Any(azurerm_monitor_action_group.Test.Id),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // Monitor Smart Detector Alert Rule can be imported using the `resource id`, e.g.
