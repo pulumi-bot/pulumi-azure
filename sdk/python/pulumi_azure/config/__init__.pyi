@@ -53,7 +53,7 @@ features: Optional[str]
 
 location: Optional[str]
 
-metadataHost: str
+metadataHost: Optional[str]
 """
 The Hostname which should be used for the Azure Metadata Service.
 """
@@ -79,18 +79,18 @@ skipCredentialsValidation: Optional[str]
 [DEPRECATED] This will cause the AzureRM Provider to skip verifying the credentials being used are valid.
 """
 
-skipProviderRegistration: Optional[str]
+skipProviderRegistration: str
 """
 Should the AzureRM Provider skip registering all of the Resource Providers that it supports, if they're not already
 registered?
 """
 
-storageUseAzuread: Optional[str]
+storageUseAzuread: str
 """
 Should the AzureRM Provider use AzureAD to access the Storage Data Plane API's?
 """
 
-subscriptionId: Optional[str]
+subscriptionId: str
 """
 The Subscription ID which should be used.
 """
