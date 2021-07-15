@@ -80,7 +80,7 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('location') or _utilities.get_env('ARM_LOCATION')
 
     @property
-    def metadata_host(self) -> str:
+    def metadata_host(self) -> Optional[str]:
         """
         The Hostname which should be used for the Azure Metadata Service.
         """
@@ -116,7 +116,7 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('skipCredentialsValidation')
 
     @property
-    def skip_provider_registration(self) -> Optional[str]:
+    def skip_provider_registration(self) -> str:
         """
         Should the AzureRM Provider skip registering all of the Resource Providers that it supports, if they're not already
         registered?
@@ -124,14 +124,14 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('skipProviderRegistration') or (_utilities.get_env_bool('ARM_SKIP_PROVIDER_REGISTRATION') or False)
 
     @property
-    def storage_use_azuread(self) -> Optional[str]:
+    def storage_use_azuread(self) -> str:
         """
         Should the AzureRM Provider use AzureAD to access the Storage Data Plane API's?
         """
         return __config__.get('storageUseAzuread') or (_utilities.get_env_bool('ARM_STORAGE_USE_AZUREAD') or False)
 
     @property
-    def subscription_id(self) -> Optional[str]:
+    def subscription_id(self) -> str:
         """
         The Subscription ID which should be used.
         """
